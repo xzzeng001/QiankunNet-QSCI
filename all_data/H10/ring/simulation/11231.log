@@ -1,0 +1,156 @@
+Parsing FCIDUMP
+Freeze 0 electrons in irreps []
+    10 free electrons in irreps IR0
+converged SCF energy = -5.27545185230736
+
+******** <class 'pyscf.cc.ccsd.CCSD'> ********
+CC2 = 0
+CCSD nocc = 5, nmo = 10
+max_cycle = 50
+direct = 0
+conv_tol = 1e-07
+conv_tol_normt = 1e-05
+diis_space = 6
+diis_start_cycle = 0
+diis_start_energy_diff = 1e+09
+max_memory 4000 MB (current use 150 MB)
+Init t2, MP2 energy = -5.38269624630977  E_corr(MP2) -0.107244394002409
+Init E_corr(CCSD) = -0.107244394002409
+cycle = 1  E_corr(CCSD) = -0.127548075233088  dE = -0.0203036812  norm(t1,t2) = 0.0512196
+cycle = 2  E_corr(CCSD) = -0.136038128461144  dE = -0.00849005323  norm(t1,t2) = 0.028155
+cycle = 3  E_corr(CCSD) = -0.143777680541967  dE = -0.00773955208  norm(t1,t2) = 0.0152324
+cycle = 4  E_corr(CCSD) = -0.144075628505436  dE = -0.000297947963  norm(t1,t2) = 0.00158775
+cycle = 5  E_corr(CCSD) = -0.143929710649321  dE = 0.000145917856  norm(t1,t2) = 0.000474247
+cycle = 6  E_corr(CCSD) = -0.143952480432304  dE = -2.2769783e-05  norm(t1,t2) = 0.000111774
+cycle = 7  E_corr(CCSD) = -0.143953706503426  dE = -1.22607112e-06  norm(t1,t2) = 1.70149e-05
+cycle = 8  E_corr(CCSD) = -0.143953147517862  dE = 5.58985564e-07  norm(t1,t2) = 2.04295e-06
+cycle = 9  E_corr(CCSD) = -0.143953050046355  dE = 9.74715076e-08  norm(t1,t2) = 3.95063e-07
+CCSD converged
+E(CCSD) = -5.419404902353715  E_corr = -0.1439530500463546
+Overwritten attributes  get_hcore get_ovlp  of <class 'pyscf.scf.hf_symm.SymAdaptedRHF'>
+/public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/pyscf/gto/mole.py:1286: UserWarning: Function mol.dumps drops attribute energy_nuc because it is not JSON-serializable
+  warnings.warn(msg)
+parameters:  117
+Energy at initialization: -5.275804040689038
+Iteration: 1, Energy: -5.299038415924045
+Iteration: 2, Energy: -5.305613569171524
+Iteration: 3, Energy: -5.309495980959546
+Iteration: 4, Energy: -5.310906588414147
+Iteration: 5, Energy: -5.312018625635838
+Iteration: 6, Energy: -5.312462144419858
+Iteration: 7, Energy: -5.312923682049732
+Iteration: 8, Energy: -5.313596730229791
+Iteration: 9, Energy: -5.31471731171233
+Iteration: 10, Energy: -5.31556529694837
+Iteration: 11, Energy: -5.3167167141737615
+Iteration: 12, Energy: -5.317405073904396
+Iteration: 13, Energy: -5.317666902679633
+Iteration: 14, Energy: -5.31773578367122
+Iteration: 15, Energy: -5.318069033600613
+Iteration: 16, Energy: -5.318203240672115
+Iteration: 17, Energy: -5.318415558476499
+Iteration: 18, Energy: -5.318576717928441
+Iteration: 19, Energy: -5.318756044344303
+Iteration: 20, Energy: -5.318996829492381
+Iteration: 21, Energy: -5.3194915322653085
+Iteration: 22, Energy: -5.320121702727238
+Iteration: 23, Energy: -5.321411637257409
+Iteration: 24, Energy: -5.322239094405848
+Iteration: 25, Energy: -5.323714025970047
+Iteration: 26, Energy: -5.325411804776385
+Iteration: 27, Energy: -5.327473872395048
+Iteration: 28, Energy: -5.328942759055537
+Iteration: 29, Energy: -5.330794687574333
+Iteration: 30, Energy: -5.332199390703197
+Iteration: 31, Energy: -5.333454581620824
+Iteration: 32, Energy: -5.3341913254349205
+Iteration: 33, Energy: -5.334978963486545
+Iteration: 34, Energy: -5.336268865770025
+Iteration: 35, Energy: -5.337765115858517
+Iteration: 36, Energy: -5.338440620597685
+Iteration: 37, Energy: -5.338984751902954
+Iteration: 38, Energy: -5.339687671082723
+Iteration: 39, Energy: -5.340348939231183
+Iteration: 40, Energy: -5.340867512178348
+Iteration: 41, Energy: -5.341359498171961
+Iteration: 42, Energy: -5.341614514156241
+Iteration: 43, Energy: -5.342007927386415
+Iteration: 44, Energy: -5.342261279316227
+Iteration: 45, Energy: -5.342644790033031
+Iteration: 46, Energy: -5.343370221326129
+Iteration: 47, Energy: -5.343781186105408
+Iteration: 48, Energy: -5.344596684743591
+Iteration: 49, Energy: -5.3450807059275744
+Iteration: 50, Energy: -5.345790793291222
+Iteration: 51, Energy: -5.3462882674643115
+Iteration: 52, Energy: -5.3468472821479445
+Iteration: 53, Energy: -5.347360531779847
+Iteration: 54, Energy: -5.348082559987915
+Iteration: 55, Energy: -5.348450528259703
+Iteration: 56, Energy: -5.348887886321452
+Iteration: 57, Energy: -5.349183939051303
+Iteration: 58, Energy: -5.349510694448059
+Iteration: 59, Energy: -5.349951758673745
+Iteration: 60, Energy: -5.350281010597052
+Iteration: 61, Energy: -5.350458224162057
+Iteration: 62, Energy: -5.350676842538794
+Iteration: 63, Energy: -5.3508042938133675
+Iteration: 64, Energy: -5.351078551247128
+Iteration: 65, Energy: -5.351250980402101
+Iteration: 66, Energy: -5.35146749709321
+Iteration: 67, Energy: -5.351622980571403
+Iteration: 68, Energy: -5.35177058141698
+Iteration: 69, Energy: -5.352077864349887
+Iteration: 70, Energy: -5.352211754613984
+Iteration: 71, Energy: -5.352585093074405
+Iteration: 72, Energy: -5.352848204698268
+Iteration: 73, Energy: -5.353133457937385
+Iteration: 74, Energy: -5.3533600499708145
+Iteration: 75, Energy: -5.353595347985104
+Iteration: 76, Energy: -5.353939441536289
+Iteration: 77, Energy: -5.3541923000212215
+Iteration: 78, Energy: -5.354678157094026
+Iteration: 79, Energy: -5.355378452638347
+Iteration: 80, Energy: -5.355970326856699
+Iteration: 81, Energy: -5.356872040854703
+Iteration: 82, Energy: -5.3577412418162575
+Iteration: 83, Energy: -5.358162215784594
+Iteration: 84, Energy: -5.358751965862484
+Iteration: 85, Energy: -5.359053303072785
+Iteration: 86, Energy: -5.359309195903083
+Iteration: 87, Energy: -5.359527351093779
+Iteration: 88, Energy: -5.359705051471278
+Iteration: 89, Energy: -5.359874208444094
+Iteration: 90, Energy: -5.360211841305437
+Iteration: 91, Energy: -5.360269069124067
+Iteration: 92, Energy: -5.360521743209501
+Iteration: 93, Energy: -5.36062026771605
+Iteration: 94, Energy: -5.360791034856278
+Iteration: 95, Energy: -5.360957713315387
+Iteration: 96, Energy: -5.361064894527582
+Iteration: 97, Energy: -5.361184265549034
+Iteration: 98, Energy: -5.361267259878863
+Iteration: 99, Energy: -5.361330342425174
+Iteration: 100, Energy: -5.36140204021067
+Iteration: 101, Energy: -5.361451908245097
+Iteration: 102, Energy: -5.361505835897918
+Iteration: 103, Energy: -5.361581386911229
+Iteration: 104, Energy: -5.361637779661891
+Iteration: 105, Energy: -5.361689436069244
+Iteration: 106, Energy: -5.361718489876578
+Iteration: 107, Energy: -5.361751043797867
+Iteration: 108, Energy: -5.3617772986098835
+Iteration: 109, Energy: -5.3618012098500385
+Iteration: 110, Energy: -5.361818612550092
+Iteration: 111, Energy: -5.361838353563047
+Iteration: 112, Energy: -5.361858764879068
+Iteration: 113, Energy: -5.3618712858751385
+Iteration: 114, Energy: -5.361898652348195
+Iteration: 115, Energy: -5.361913209251666
+Iteration: 116, Energy: -5.361927698240083
+Iteration: 117, Energy: -5.361966038872261
+Iteration: 118, Energy: -5.361993663609849
+Iteration: 119, Energy: -5.362000301415203
+Iteration: 120, Energy: -5.362044278256526
+Optimization completed. Final energy: -5.362044278256523
+Final parameters saved to final_parameters.npy

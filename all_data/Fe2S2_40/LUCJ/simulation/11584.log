@@ -1,0 +1,77 @@
+Parsing FCIDUMP
+Freeze 0 electrons in irreps []
+    30 free electrons in irreps IR0
+Overwritten attributes  get_ovlp get_hcore  of <class 'pyscf.scf.hf_symm.SymAdaptedRHF'>
+/public/home/xzzeng/anaconda3/lib/python3.11/site-packages/pyscf/gto/mole.py:1294: UserWarning: Function mol.dumps drops attribute energy_nuc because it is not JSON-serializable
+  warnings.warn(msg)
+/public/home/xzzeng/anaconda3/lib/python3.11/site-packages/pyscf/gto/mole.py:1294: UserWarning: Function mol.dumps drops attribute intor_symmetric because it is not JSON-serializable
+  warnings.warn(msg)
+SCF not converged.
+SCF energy = -116.135032625338
+<class 'pyscf.cc.ccsd.CCSD'> does not have attributes  converged
+
+******** <class 'pyscf.cc.ccsd.CCSD'> ********
+CC2 = 0
+CCSD nocc = 15, nmo = 20
+max_cycle = 50
+direct = 0
+conv_tol = 1e-07
+conv_tol_normt = 1e-05
+diis_space = 6
+diis_start_cycle = 0
+diis_start_energy_diff = 1e+09
+max_memory 4000 MB (current use 351 MB)
+Init t2, MP2 energy = -116.215025921302  E_corr(MP2) -0.0799932959643241
+Init E_corr(CCSD) = -0.0799935310930498
+cycle = 1  E_corr(CCSD) = -0.0966938052282574  dE = -0.0167002741  norm(t1,t2) = 0.135227
+cycle = 2  E_corr(CCSD) = -0.118349715679817  dE = -0.0216559105  norm(t1,t2) = 0.0843003
+cycle = 3  E_corr(CCSD) = -0.133901467181301  dE = -0.0155517515  norm(t1,t2) = 0.0753282
+cycle = 4  E_corr(CCSD) = -0.166569936983046  dE = -0.0326684698  norm(t1,t2) = 0.0602906
+cycle = 5  E_corr(CCSD) = -0.181245245315435  dE = -0.0146753083  norm(t1,t2) = 0.0406403
+cycle = 6  E_corr(CCSD) = -0.190449010780551  dE = -0.00920376547  norm(t1,t2) = 0.0213654
+cycle = 7  E_corr(CCSD) = -0.189821796867791  dE = 0.000627213913  norm(t1,t2) = 0.0171736
+cycle = 8  E_corr(CCSD) = -0.190233241709709  dE = -0.000411444842  norm(t1,t2) = 0.0135635
+cycle = 9  E_corr(CCSD) = -0.193163083415497  dE = -0.00292984171  norm(t1,t2) = 0.0119901
+cycle = 10  E_corr(CCSD) = -0.193657633744044  dE = -0.000494550329  norm(t1,t2) = 0.010756
+cycle = 11  E_corr(CCSD) = -0.194490693564721  dE = -0.000833059821  norm(t1,t2) = 0.0102588
+cycle = 12  E_corr(CCSD) = -0.194789256099163  dE = -0.000298562534  norm(t1,t2) = 0.0101081
+cycle = 13  E_corr(CCSD) = -0.194829676172766  dE = -4.04200736e-05  norm(t1,t2) = 0.0100964
+cycle = 14  E_corr(CCSD) = -0.194658660110861  dE = 0.000171016062  norm(t1,t2) = 0.0101202
+cycle = 15  E_corr(CCSD) = -0.194753372933132  dE = -9.47128223e-05  norm(t1,t2) = 0.00999817
+cycle = 16  E_corr(CCSD) = -0.194631020936059  dE = 0.000122351997  norm(t1,t2) = 0.00972606
+cycle = 17  E_corr(CCSD) = -0.194368562834673  dE = 0.000262458101  norm(t1,t2) = 0.00948289
+cycle = 18  E_corr(CCSD) = -0.194180268810767  dE = 0.000188294024  norm(t1,t2) = 0.00929998
+cycle = 19  E_corr(CCSD) = -0.194449685159182  dE = -0.000269416348  norm(t1,t2) = 0.00916654
+cycle = 20  E_corr(CCSD) = -0.194540805414168  dE = -9.1120255e-05  norm(t1,t2) = 0.00913847
+cycle = 21  E_corr(CCSD) = -0.19459604090665  dE = -5.52354925e-05  norm(t1,t2) = 0.0091445
+cycle = 22  E_corr(CCSD) = -0.194611345495776  dE = -1.53045891e-05  norm(t1,t2) = 0.00914941
+cycle = 23  E_corr(CCSD) = -0.194337506568327  dE = 0.000273838927  norm(t1,t2) = 0.00915077
+cycle = 24  E_corr(CCSD) = -0.194290988967841  dE = 4.65176005e-05  norm(t1,t2) = 0.00913492
+cycle = 25  E_corr(CCSD) = -0.193612756911335  dE = 0.000678232057  norm(t1,t2) = 0.00912222
+cycle = 26  E_corr(CCSD) = -0.193509288919199  dE = 0.000103467992  norm(t1,t2) = 0.00898783
+cycle = 27  E_corr(CCSD) = -0.193963523919799  dE = -0.000454235001  norm(t1,t2) = 0.00875464
+cycle = 28  E_corr(CCSD) = -0.194204863387023  dE = -0.000241339467  norm(t1,t2) = 0.00871934
+cycle = 29  E_corr(CCSD) = -0.19414390419648  dE = 6.09591905e-05  norm(t1,t2) = 0.00873479
+cycle = 30  E_corr(CCSD) = -0.194127558953848  dE = 1.63452426e-05  norm(t1,t2) = 0.00873069
+cycle = 31  E_corr(CCSD) = -0.194101039611393  dE = 2.65193425e-05  norm(t1,t2) = 0.00871055
+cycle = 32  E_corr(CCSD) = -0.19497457351481  dE = -0.000873533903  norm(t1,t2) = 0.00853529
+cycle = 33  E_corr(CCSD) = -0.195618824043118  dE = -0.000644250528  norm(t1,t2) = 0.00816422
+cycle = 34  E_corr(CCSD) = -0.195746062015759  dE = -0.000127237973  norm(t1,t2) = 0.00807328
+cycle = 35  E_corr(CCSD) = -0.19585630085036  dE = -0.000110238835  norm(t1,t2) = 0.00808353
+cycle = 36  E_corr(CCSD) = -0.195859666680578  dE = -3.36583022e-06  norm(t1,t2) = 0.00808424
+cycle = 37  E_corr(CCSD) = -0.195895029668535  dE = -3.5362988e-05  norm(t1,t2) = 0.00807387
+cycle = 38  E_corr(CCSD) = -0.195606360262149  dE = 0.000288669406  norm(t1,t2) = 0.00807692
+cycle = 39  E_corr(CCSD) = -0.195615765956243  dE = -9.40569409e-06  norm(t1,t2) = 0.0080891
+cycle = 40  E_corr(CCSD) = -0.195677182546914  dE = -6.14165907e-05  norm(t1,t2) = 0.00808475
+cycle = 41  E_corr(CCSD) = -0.195552365329012  dE = 0.000124817218  norm(t1,t2) = 0.00809157
+cycle = 42  E_corr(CCSD) = -0.195355796766361  dE = 0.000196568563  norm(t1,t2) = 0.00805182
+cycle = 43  E_corr(CCSD) = -0.195382461323529  dE = -2.66645572e-05  norm(t1,t2) = 0.00801834
+cycle = 44  E_corr(CCSD) = -0.195617774092476  dE = -0.000235312769  norm(t1,t2) = 0.00798529
+cycle = 45  E_corr(CCSD) = -0.196100939293165  dE = -0.000483165201  norm(t1,t2) = 0.00784171
+cycle = 46  E_corr(CCSD) = -0.196213448445922  dE = -0.000112509153  norm(t1,t2) = 0.00767557
+cycle = 47  E_corr(CCSD) = -0.196476609129428  dE = -0.000263160684  norm(t1,t2) = 0.00758201
+cycle = 48  E_corr(CCSD) = -0.196658449574965  dE = -0.000181840446  norm(t1,t2) = 0.00740474
+cycle = 49  E_corr(CCSD) = -0.19670956312576  dE = -5.11135508e-05  norm(t1,t2) = 0.00715526
+cycle = 50  E_corr(CCSD) = -0.196736067979277  dE = -2.65048535e-05  norm(t1,t2) = 0.00705673
+CCSD not converged
+E(CCSD) = -116.3317686933173  E_corr = -0.1967360679792769

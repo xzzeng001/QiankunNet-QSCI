@@ -1,0 +1,3075 @@
+/public/home/xzzeng/.local/lib/python3.8/site-packages/q2chem/qchem/transformation/_jordan_wigner.py:14: UserWarning: JIT: Compiling high-performance Jordan-Wigner kernel. Set environmental variable Q2CHEM_JIT to "NO" to disable JIT and use the Python-based Jordan-Wigner transformation.
+  warnings.warn("JIT: Compiling high-performance Jordan-Wigner kernel. \
+Using /public/home/xzzeng/.cache/torch_extensions/py38_cu121 as PyTorch extensions root...
+Creating extension directory /public/home/xzzeng/.cache/torch_extensions/py38_cu121/_jordan_wigner_cpp_cpu...
+Emitting ninja build file /public/home/xzzeng/.cache/torch_extensions/py38_cu121/_jordan_wigner_cpp_cpu/build.ninja...
+Building extension module _jordan_wigner_cpp_cpu...
+Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+[1/2] c++ -MMD -MF _jordan_wigner_cpu.o.d -DTORCH_EXTENSION_NAME=_jordan_wigner_cpp_cpu -DTORCH_API_INCLUDE_EXTENSION_H -DPYBIND11_COMPILER_TYPE=\"_gcc\" -DPYBIND11_STDLIB=\"_libstdcpp\" -DPYBIND11_BUILD_ABI=\"_cxxabi1011\" -isystem /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include -isystem /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/torch/csrc/api/include -isystem /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/TH -isystem /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/THC -isystem /public/home/xzzeng/anaconda3/envs/quantum/include/python3.8 -D_GLIBCXX_USE_CXX11_ABI=0 -fPIC -std=c++17 -O3 -std=c++17 -c /public/home/xzzeng/.local/lib/python3.8/site-packages/q2chem/qchem/transformation/_jordan_wigner_cpu.cpp -o _jordan_wigner_cpu.o 
+FAILED: _jordan_wigner_cpu.o 
+c++ -MMD -MF _jordan_wigner_cpu.o.d -DTORCH_EXTENSION_NAME=_jordan_wigner_cpp_cpu -DTORCH_API_INCLUDE_EXTENSION_H -DPYBIND11_COMPILER_TYPE=\"_gcc\" -DPYBIND11_STDLIB=\"_libstdcpp\" -DPYBIND11_BUILD_ABI=\"_cxxabi1011\" -isystem /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include -isystem /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/torch/csrc/api/include -isystem /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/TH -isystem /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/THC -isystem /public/home/xzzeng/anaconda3/envs/quantum/include/python3.8 -D_GLIBCXX_USE_CXX11_ABI=0 -fPIC -std=c++17 -O3 -std=c++17 -c /public/home/xzzeng/.local/lib/python3.8/site-packages/q2chem/qchem/transformation/_jordan_wigner_cpu.cpp -o _jordan_wigner_cpu.o 
+In file included from /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/ATen/core/TensorBase.h:14,
+                 from /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/ATen/core/TensorBody.h:38,
+                 from /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/ATen/core/Tensor.h:3,
+                 from /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/ATen/Tensor.h:3,
+                 from /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/torch/csrc/autograd/function_hook.h:3,
+                 from /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/torch/csrc/autograd/cpp_hook.h:2,
+                 from /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/torch/csrc/autograd/variable.h:6,
+                 from /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/torch/csrc/autograd/autograd.h:3,
+                 from /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/torch/csrc/api/include/torch/autograd.h:3,
+                 from /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/torch/csrc/api/include/torch/all.h:7,
+                 from /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/torch/extension.h:5,
+                 from /public/home/xzzeng/.local/lib/python3.8/site-packages/q2chem/qchem/transformation/_jordan_wigner_cpu.cpp:10:
+/public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/c10/util/C++17.h:13:2: error: #error "You're trying to build PyTorch with a too old version of GCC. We need GCC 9 or later."
+ #error \
+  ^~~~~
+ninja: build stopped: subcommand failed.
+/public/home/xzzeng/.local/lib/python3.8/site-packages/q2chem/qchem/transformation/_jordan_wigner.py:26: UserWarning: Jordan-Wigner: JIT for CPU failed with error: Error building extension '_jordan_wigner_cpp_cpu'. Using python version instead.
+  warnings.warn("Jordan-Wigner: JIT for CPU failed with error: {}. \
+/public/home/xzzeng/.local/lib/python3.8/site-packages/q2chem/qcirc/qpu/simulator/_state_vector_simulator.py:55: UserWarning: JIT: Compiling high-performance state vector simulator. Set environmental variable Q2CHEM_JIT to "NO" to disable JIT and use the Python-based state vector simulator.
+  warnings.warn("JIT: Compiling high-performance state vector simulator. \
+Using /public/home/xzzeng/.cache/torch_extensions/py38_cu121 as PyTorch extensions root...
+Creating extension directory /public/home/xzzeng/.cache/torch_extensions/py38_cu121/_apply_quantum_gate_cpp_cpu...
+Emitting ninja build file /public/home/xzzeng/.cache/torch_extensions/py38_cu121/_apply_quantum_gate_cpp_cpu/build.ninja...
+Building extension module _apply_quantum_gate_cpp_cpu...
+Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+[1/2] c++ -MMD -MF _state_vector_simulator_cpu.o.d -DTORCH_EXTENSION_NAME=_apply_quantum_gate_cpp_cpu -DTORCH_API_INCLUDE_EXTENSION_H -DPYBIND11_COMPILER_TYPE=\"_gcc\" -DPYBIND11_STDLIB=\"_libstdcpp\" -DPYBIND11_BUILD_ABI=\"_cxxabi1011\" -isystem /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include -isystem /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/torch/csrc/api/include -isystem /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/TH -isystem /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/THC -isystem /public/home/xzzeng/anaconda3/envs/quantum/include/python3.8 -D_GLIBCXX_USE_CXX11_ABI=0 -fPIC -std=c++17 -std=c++17 -O3 -fopenmp -c /public/home/xzzeng/.local/lib/python3.8/site-packages/q2chem/qcirc/qpu/simulator/_state_vector_simulator_cpu.cpp -o _state_vector_simulator_cpu.o 
+FAILED: _state_vector_simulator_cpu.o 
+c++ -MMD -MF _state_vector_simulator_cpu.o.d -DTORCH_EXTENSION_NAME=_apply_quantum_gate_cpp_cpu -DTORCH_API_INCLUDE_EXTENSION_H -DPYBIND11_COMPILER_TYPE=\"_gcc\" -DPYBIND11_STDLIB=\"_libstdcpp\" -DPYBIND11_BUILD_ABI=\"_cxxabi1011\" -isystem /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include -isystem /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/torch/csrc/api/include -isystem /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/TH -isystem /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/THC -isystem /public/home/xzzeng/anaconda3/envs/quantum/include/python3.8 -D_GLIBCXX_USE_CXX11_ABI=0 -fPIC -std=c++17 -std=c++17 -O3 -fopenmp -c /public/home/xzzeng/.local/lib/python3.8/site-packages/q2chem/qcirc/qpu/simulator/_state_vector_simulator_cpu.cpp -o _state_vector_simulator_cpu.o 
+In file included from /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/ATen/core/TensorBase.h:14,
+                 from /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/ATen/core/TensorBody.h:38,
+                 from /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/ATen/core/Tensor.h:3,
+                 from /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/ATen/Tensor.h:3,
+                 from /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/torch/csrc/autograd/function_hook.h:3,
+                 from /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/torch/csrc/autograd/cpp_hook.h:2,
+                 from /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/torch/csrc/autograd/variable.h:6,
+                 from /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/torch/csrc/autograd/autograd.h:3,
+                 from /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/torch/csrc/api/include/torch/autograd.h:3,
+                 from /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/torch/csrc/api/include/torch/all.h:7,
+                 from /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/torch/extension.h:5,
+                 from /public/home/xzzeng/.local/lib/python3.8/site-packages/q2chem/qcirc/qpu/simulator/_state_vector_simulator_cpu.cpp:2:
+/public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/c10/util/C++17.h:13:2: error: #error "You're trying to build PyTorch with a too old version of GCC. We need GCC 9 or later."
+ #error \
+  ^~~~~
+ninja: build stopped: subcommand failed.
+/public/home/xzzeng/.local/lib/python3.8/site-packages/q2chem/qcirc/qpu/simulator/_state_vector_simulator.py:80: UserWarning: StateVector: JIT for CPU failed with error: Error building extension '_apply_quantum_gate_cpp_cpu'. Using python version instead.
+  warnings.warn("StateVector: JIT for CPU failed with error: {}. \
+Using /public/home/xzzeng/.cache/torch_extensions/py38_cu121 as PyTorch extensions root...
+Creating extension directory /public/home/xzzeng/.cache/torch_extensions/py38_cu121/_apply_quantum_gate_cpp_gpu...
+Detected CUDA files, patching ldflags
+/public/home/xzzeng/.local/lib/python3.8/site-packages/q2chem/qcirc/qpu/simulator/_state_vector_simulator.py:102: UserWarning: StateVector: JIT for GPU failed with error: CUDA_HOME environment variable is not set. Please set it to your CUDA install root.. Using python version instead.
+  warnings.warn("StateVector: JIT for GPU failed with error: {}. \
+filtered_states:  [('111111111100110000000000', -0.524422406, 0), ('111111001100111100000000', 0.428600601, 1), ('111111111100010000000010', -0.246465761, 2), ('111111111100100000000001', 0.246465761, 3), ('111111001100011100000010', 0.204046405, 4), ('111111001100101100000001', -0.204046405, 5), ('111111011100110000001000', 0.189072391, 6), ('111111101100110000000100', -0.189072391, 7), ('111101111100110000100000', -0.180407561, 8), ('111110111100110000010000', 0.180407561, 9), ('111101001100111100100000', 0.143753416, 10), ('111110001100111100010000', -0.143753416, 11), ('111111111100000000000011', -0.114660169, 12)]
+excitations:  [[4, 6, 7, 14, 15], [2, 12, 22], [2, 13, 23], [6, 6, 7, 12, 14, 15, 22], [6, 6, 7, 13, 14, 15, 23], [6, 6, 7, 12, 14, 15, 22], [6, 6, 7, 13, 14, 15, 23], [2, 6, 20], [2, 7, 21], [2, 4, 18], [2, 5, 19], [2, 12, 22], [2, 13, 23], [4, 7, 14, 15, 20], [4, 6, 14, 15, 21], [6, 4, 6, 7, 14, 15, 18], [6, 5, 6, 7, 14, 15, 19], [6, 4, 6, 7, 14, 15, 18], [6, 5, 6, 7, 14, 15, 19], [2, 4, 18], [2, 5, 19], [4, 12, 13, 22, 23], [4, 12, 13, 22, 23], [4, 6, 7, 14, 15], [8, 6, 7, 12, 13, 14, 15, 22, 23], [8, 6, 7, 12, 13, 14, 15, 22, 23], [4, 6, 7, 14, 15], [8, 6, 7, 12, 13, 14, 15, 22, 23], [4, 6, 12, 20, 22], [4, 7, 12, 21, 22], [4, 6, 13, 20, 23], [4, 7, 13, 21, 23], [4, 4, 12, 18, 22], [4, 5, 12, 19, 22], [4, 4, 13, 18, 23], [4, 5, 13, 19, 23], [4, 12, 13, 22, 23], [6, 7, 12, 14, 15, 20, 22], [6, 6, 12, 14, 15, 21, 22], [6, 7, 13, 14, 15, 20, 23], [6, 6, 13, 14, 15, 21, 23], [8, 4, 6, 7, 12, 14, 15, 18, 22], [8, 5, 6, 7, 12, 14, 15, 19, 22], [8, 4, 6, 7, 13, 14, 15, 18, 23], [8, 5, 6, 7, 13, 14, 15, 19, 23], [4, 6, 7, 20, 21], [8, 4, 6, 7, 12, 14, 15, 18, 22], [8, 5, 6, 7, 12, 14, 15, 19, 22], [8, 4, 6, 7, 13, 14, 15, 18, 23], [8, 5, 6, 7, 13, 14, 15, 19, 23], [4, 4, 6, 18, 20], [4, 5, 6, 19, 20], [4, 4, 7, 18, 21], [4, 5, 7, 19, 21], [4, 4, 5, 18, 19], [4, 4, 12, 18, 22], [4, 5, 12, 19, 22], [4, 4, 13, 18, 23], [4, 5, 13, 19, 23], [2, 13, 23], [2, 12, 22], [6, 4, 7, 14, 15, 18, 20], [6, 5, 7, 14, 15, 19, 20], [6, 4, 6, 14, 15, 18, 21], [6, 5, 6, 14, 15, 19, 21], [4, 6, 7, 14, 15], [8, 4, 5, 6, 7, 14, 15, 18, 19], [8, 4, 5, 6, 7, 14, 15, 18, 19], [4, 6, 7, 14, 15], [6, 6, 7, 13, 14, 15, 23], [6, 6, 7, 12, 14, 15, 22], [6, 6, 12, 13, 20, 22, 23], [6, 7, 12, 13, 21, 22, 23], [6, 4, 12, 13, 18, 22, 23], [6, 5, 12, 13, 19, 22, 23], [4, 4, 5, 18, 19], [10, 4, 6, 7, 12, 13, 14, 15, 18, 22, 23], [10, 5, 6, 7, 12, 13, 14, 15, 19, 22, 23]]
+unique_position:  [4, 5, 6, 7, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23]
+remaining_positions:  [0, 1, 2, 3, 8, 9, 10, 11, 16, 17]
+Num_params:  280
+simulator options:
+{'initial_state': 'allzero', 'device': 'cpu', 'n_threads': 32}
+mps options:
+{'max_bond_dimension': 64, 'cut_threshold': 1e-06, 'algorithm': 'vidal'}
+Start optimization.
+Number of qubits: 24
+Number of parameters: 280
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1179.5556999736252
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1179.696308568071
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1179.8733005758895
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.0398599562286
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.0398599562295
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.0398599562295
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.039866810228
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.039866810228
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.039866810228
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.039866810228
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.039866810228
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.039866810228
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.086014633977
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.136669389746
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2121766345474
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2535830140614
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2271598761265
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.227506789734
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2535830644842
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2535830205757
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2530039316218
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2535827362296
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.253003879001
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2535828843888
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2524423952866
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2535828491295
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2530039251963
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2535828717128
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.249316250452
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2529671548682
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2484850439323
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2520890610613
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2535829132432
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2535906685737
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2539531907848
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2555308478475
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2539532018288
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2539531745801
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.249962951662
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2539532018282
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2447002276392
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2505135733131
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.250696978282
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2472478970217
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.23484473212
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2345369862041
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2609633153018
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2268395249803
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2365518984097
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2519047396386
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2419207168937
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.251860071047
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2365696806448
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2494153793257
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2405527788098
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2488960274152
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2372899733314
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2406274546474
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.24847728477
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.240532508484
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.240644327229
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2352716044657
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2357920091245
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2406452773441
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2418411419978
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.244060218938
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2406273808238
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2405468854838
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2416373849255
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2418644690922
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.235271393372
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2358082936516
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2406453070173
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2440272366769
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2368076682105
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2349128629817
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2245870971637
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.234957505515
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2300726367334
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2334015553233
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2450233206355
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2318650836478
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.234299066393
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2609633153018
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2402289374168
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2399367645146
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2405379739453
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2390914104362
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.24056234303
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2384108655922
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.24332372277
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2391160256461
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2345472534373
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2521374568526
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.243096536332
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.24324261401
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2406378223081
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.24543099396
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2521370961235
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2346307044386
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2321699817796
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2405476952304
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2445248739302
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2345223682591
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2416528820036
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2505888218302
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2416224062972
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2442826338684
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.240548274351
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2406443079983
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.249141157832
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2276193240007
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2405329174767
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2432705743936
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2417505666363
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2406102739717
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2484894499187
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.241750735817
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2406455100438
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2405475412909
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2405483371674
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2405475395967
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2405584890369
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2405610958854
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2432409161713
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2432562035478
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2406453427527
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2406462461686
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2405481052672
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.243241163757
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2416554695158
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.239848114568
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2433686171257
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2321523857727
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2406484887592
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2410606588219
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2406140109201
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2406688399715
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.243241065125
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2405172734989
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.241753892412
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.254747286385
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.242848042004
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2511841031785
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2481024986982
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2405475995147
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2346307671096
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2321849746152
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2481025064383
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2405478189917
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2346311051228
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2306882480273
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.219537940126
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.4495133792393
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2089328310467
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.1348948065677
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2181081963859
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2424528689462
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2324861485624
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2261627930538
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2267756050603
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2236358290406
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.232212414554
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2261633403984
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2411561067174
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2212953632009
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.220307071684
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2341238861743
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2443349478485
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2242574225675
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2416937469072
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.23402960691
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.1900779472694
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2353381908756
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2329051466493
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2328675661572
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.232904031143
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.183688958285
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2403919391909
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2277220450947
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2702341079416
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2215639303622
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.223638735415
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.220114496098
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2053708385029
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2136156108575
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.23424383133
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.224766589946
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2235510569765
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.228897301128
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.23279715289
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2225126524118
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2252685050053
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2346924621522
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2242026236936
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2288979526925
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2345651350004
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2261837102383
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2346933641275
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2273874233038
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2273862185016
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2353390986495
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2267764501669
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.226772145055
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2276655880128
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2186002952833
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2267760425561
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2307065592306
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2353395098512
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2273869025446
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2353398320784
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.226776604562
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2363525238834
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2313500012087
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2268872689303
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2325495239354
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2292520355438
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2375522006596
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2265519749817
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2324838657503
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2183657675323
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.238421110588
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.231060746551
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2509254352092
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2358277561043
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2307852728175
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2261133935613
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2320151719032
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2352777613653
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2267549844328
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2353412067944
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.226722992744
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2242081200484
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.248649173314
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2353402333415
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.235344219328
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2417504441582
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2353444064229
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2416975479791
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2328689306307
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.235377332913
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2326366630143
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2378401487679
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2363757426845
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.226861047005
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2379312664457
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2267762468514
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2341380150751
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2335106383246
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.236676823027
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.22738719284
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2304618831324
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2273872419114
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2352695435566
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.224257578221
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2319080144316
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.227385851724
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2307061537645
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.235339416037
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.235968731668
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.23534042514
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2359683960233
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2354267709752
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2267957931667
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2359681403054
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.236580349703
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.227387032572
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2273619939183
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.226776534614
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2359683762168
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.23301537513
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2279742525131
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2267774674906
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2319075653859
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2273873193856
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2267752390626
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.242420462839
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2267867021355
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.241740547937
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2267750180297
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2307051369862
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.232287385345
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2415108789178
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2299863920928
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2367147219193
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2105909733016
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2276001965474
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.220459259831
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2388151658167
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.218727029318
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2321576866018
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2196901202435
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.235965947446
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.224561689849
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2328402665923
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.227598163071
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2387382962008
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.224501435986
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2355726883409
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2227200837713
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2343230678925
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2171669448433
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2410251066547
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2073653947477
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2046352523569
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2183100539614
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2152092330246
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2249603693479
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2184373357672
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2225349835585
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2247164225134
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2335878678894
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2029456446758
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.234987614098
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.1969361570218
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.239963103303
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.23439663815
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.238153005513
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.23631829967
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2381471208644
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2327861316855
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2428840999185
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2396804385987
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.238142720708
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2337547058842
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.242884018986
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.225652852535
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2404811140573
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2327870153529
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.240466035843
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2402794777286
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2393518530266
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2245061901972
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2375882904628
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2237399698374
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2425907993736
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2170065695313
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.239644112783
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2327030385545
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2395382195468
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2283376763269
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2250851279312
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2308532537436
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2196652592486
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2044723181968
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2193323655501
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2259944465004
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.225826238382
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2239808635998
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2314745522322
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2102071029376
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.235216019753
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2203879145668
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2264733744455
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2074758093606
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2259942429912
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.222822145598
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2106890902414
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.230432647388
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2242019738283
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2202462176228
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2234654395256
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.231882363851
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2242040120366
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.223418225427
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2310456440177
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2369245738637
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2326703152298
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2230415879214
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.226643070564
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.234347927452
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2409159895842
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2331102185392
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2309508925698
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2278387343524
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2375835626801
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2182000536168
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2358673284564
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2279158700526
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2346385563574
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.21326424046
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2242584383835
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.207310441441
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2270850247983
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.218207724292
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.225686043888
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2326225458903
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2280683842307
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2036729972224
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2246750923134
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2235322167353
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2266990516948
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2240146421643
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2327465682324
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2145477241322
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2270843379506
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2063108879188
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2363171816316
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2140311283208
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2363182981187
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.207819938945
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2270846936692
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.221327567178
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2270855755974
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2087755780183
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.227084889753
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2092391561812
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2267773607405
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.219229918365
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2363169695893
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.218718016699
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2270843373276
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2192293735611
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2208480586057
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2061624453083
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.227386327038
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2235080671705
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2365804841695
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.213837588574
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.227085717399
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2140310383922
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2270860240392
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2092404702196
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2270852417976
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.221050961014
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.235883725479
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2041436691518
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.236382745499
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2109650626664
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2316582329859
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2142981196928
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2322980270314
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2102063894993
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2266065405852
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2056129608293
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.233755098703
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2060567123401
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.239629616248
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2086756960095
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2279288658897
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.217895391548
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2375596522982
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.218717830629
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2180445875802
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2208792255028
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.233487931846
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.222974269762
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2487334832633
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2161086733806
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2321935211096
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2236418439786
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2163916510713
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.220879496224
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.227086320226
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2161643080576
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2333667831124
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2135492343632
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2357949753418
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2248999077824
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2277829122352
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2236415091272
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2280678106545
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.226204583427
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.227084413883
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.219073438103
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2396769355068
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2236419102016
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2276978358202
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2190736216255
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.23779098575
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.205799291458
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2277757721272
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2135490401329
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.227088294348
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.216152420363
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2365815468286
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2135490401195
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.241745400585
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2073111206298
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2377904310308
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.213549022799
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2272696428467
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2031537414532
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2313904327993
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2140527313968
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.226698879161
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2135492261666
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2351637809181
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2161680346776
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2353406559728
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.225294987464
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2270850227956
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.207272239589
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2270855120364
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2146680921312
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2270846750769
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2031505561656
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2266068187432
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.204220497559
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.236317214728
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.213545720742
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2265230020757
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.216151855854
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2270852526017
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.219073170094
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2242011773626
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.220556887548
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.231987519829
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2081832695344
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2352294173618
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2161644228609
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2270848225105
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2173369776715
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2417408735248
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.213550204776
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.227331165699
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2189431967436
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2339021678272
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.207776926539
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.227085917895
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.213549460359
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2270852225108
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.208226037394
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2270845467917
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2262862018306
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2270854381447
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2208830236384
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2270846015554
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2161643194456
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2416886728884
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2261745405694
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2270842761739
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.21346162512
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.236317382439
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2208853868926
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2270842880132
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2213647475821
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2270855760516
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2208711901185
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2270859878256
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2135409801247
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.227084628181
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2208714141623
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2372391800225
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2109263700352
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2270848852618
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2123339667937
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2363173683948
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2109244730668
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2270847193415
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2208716640719
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2272180014081
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2208681192112
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.227085721063
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2109249897248
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2270850890106
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2182442491262
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2421631136365
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2208713140774
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2428041602711
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2208675826557
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2276955456825
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2208678541706
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2396301524593
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.218244071694
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2123186467852
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.220871189855
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2047137404961
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2208714534281
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.206945011372
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2208713398
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2247117730901
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2209414884119
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2270845459693
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2209419586277
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2351963859326
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.210977838944
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2288903908902
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2182073908398
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2272189071243
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2187046571967
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.22721836888
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2209487185949
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2247123613597
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2194272367801
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.221766315044
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2209420696533
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2260940938454
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2209463193021
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2273908204065
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.226730983685
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2288125139473
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2409906609685
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2262404482797
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2245052282005
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.226245746039
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2262967122094
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2237691879102
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.235338679065
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2237695662482
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2334294386098
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2237696611087
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2363526909073
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.210212258103
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2341239329073
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2237596967318
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2331423324747
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.226186019668
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2319873937336
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2238206059114
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2353396769101
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.213067376181
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2429772106475
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2130653892928
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2261641582363
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2157505503988
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.226776943066
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.22618567059
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2353399047372
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.228760729779
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2403923924887
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2261859085015
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2346931844331
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2398820984013
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2326061855974
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2398857374678
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2328683099886
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2398808199305
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2266996805458
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2398860627927
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2267767687183
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2369901768948
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2262142787213
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2398811316032
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2242572846578
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2398859233213
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.235270857559
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2398808193445
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.231926464195
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.239885650078
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2209320945947
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2423880810325
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2387689385866
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2398808793857
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2347629434455
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2417532441473
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2267761437422
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.226180618754
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.226109183253
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2101758067556
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2424791879394
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2237596227965
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.226163177968
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2237596235425
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2416220261132
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2398812027473
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2393753567678
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2398808193275
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2346926033229
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2369866992592
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2494219542746
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2398853310162
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2352706771126
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2398862661237
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2353413382925
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2398871532528
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2363527204438
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2131051529902
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.226775451992
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2131031409185
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2353430995881
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2275641161787
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2277755715652
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2105898195332
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2417409294094
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2238201627808
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2273314984147
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2261855676634
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2358989255952
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2237595204922
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2273312381303
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.223765282764
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.235339202232
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.226245230314
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2359021625032
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2131029896898
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2242583255659
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2261852689505
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2273864854706
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2261860065762
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.235340516923
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2131670603098
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2370092283854
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2131032870054
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2273866927037
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2131027247417
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2353717491849
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2105900270785
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2353387897438
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.210595446687
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.227385874678
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2221169553395
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2417485443616
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.210590036882
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2353399622332
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2131053801122
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.237120663933
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2105900270826
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2319074933023
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2114436435193
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.22840499157
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2105895791146
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2313502768475
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.213102990548
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2273317426743
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2105902021528
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2417411641513
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.21111223493
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.235969725571
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2131668425945
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2277749117345
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2196246640513
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.226721093304
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2131668425634
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2363526352199
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2105899867538
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2276180723468
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2196866480213
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2361547672135
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.223820605896
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2358989791562
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.223820606347
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.241741558067
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2238205620781
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2353730321506
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2237592676413
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.235339957993
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.223829964412
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2359684739738
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2149651021696
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2267544798278
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2237824642884
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.235339317338
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2238304600528
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2267764304627
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2148914738939
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2274069681118
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2249036226006
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2273874978187
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2237805257728
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2429771760242
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.223826247119
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.235342579985
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2148913738831
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2353394172844
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2237700298792
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2353428749254
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2237812408662
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2273872286348
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2262484196306
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2353389245852
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.223833386692
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2359691039828
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2237549094043
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2424099333496
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2262455920604
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2319278207945
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2237696041516
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2417414309323
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2250033868222
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2267755824062
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.226355431862
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2353400144764
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2249027879136
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2359719358458
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2261890999728
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2359690138883
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2238154200536
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2359719897984
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.226679809614
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.231908110938
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2106552199045
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.226776661862
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.210590386857
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.22606008035
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2242683649283
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.235343515796
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.214891772093
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.235339643676
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2238359448586
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2267753135418
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.219691877339
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2353389651835
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2105923068177
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.235968715583
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2221834313002
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2400676005066
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2117426240861
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2379842473813
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2131700745767
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2353403902664
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2107019838393
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2267755724347
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2105906187805
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.235339758881
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.219666475621
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.241741316374
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2106570140033
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2284043264046
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2149657352948
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2325526376899
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2196299684267
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2267761365329
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2111647338033
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2347620156168
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.219624915661
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2359694076777
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2266849996734
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2267767456462
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2238162786334
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2352700074398
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2158603185967
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2242584963085
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2173997648058
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.241741361669
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2238266411177
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2273875528356
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2238153821781
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2319863445932
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2148899332985
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2353400112117
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.224532678234
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2273876305892
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.223825450338
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2325515795133
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.242397510096
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2424101963795
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2280644176883
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2353386434513
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2178219955065
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2353393763758
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.224201386372
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2372420929855
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.22507286048
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2265607690379
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.227084628295
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2379977795133
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2227627485477
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2148946895663
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2172330024296
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2293028660733
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.212459300302
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2186801614687
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2317015800854
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2181363795664
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2303307022903
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2186390918696
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.23826746476
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2271214312314
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2367977658048
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.218136500455
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2288961225734
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2267622114423
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2327246868747
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.4000906758583
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2393155612813
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2181331471834
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2208360324953
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2193657562887
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2132827838507
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2500837483815
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2266459610207
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2349413659354
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2238506104732
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.231762487698
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2428340471954
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2256302510345
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2348337040667
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2229904525607
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.218782346651
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.230406577443
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2357432196297
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.230412091611
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2270846399247
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2305173870304
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2270844045916
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.230406297209
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2270845100336
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2304815800114
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2245057176144
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.446680627572
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.227084719461
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2272847129375
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2270849269041
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2206883934637
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2331737370444
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2293952141931
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2328460308017
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2206888203089
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.236317016261
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2206883921197
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.235164194272
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.22068841335
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2300286198752
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2293979343108
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2271915474937
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2294705478985
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.22719090969
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2210523183394
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2371943209505
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2205703762554
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2267209544407
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.22299513596
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2242460756029
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2319875402575
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2330400540677
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.240394029412
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.224246186703
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2245116259933
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2242461159321
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2337541573588
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2334008478915
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2378374472335
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2279495817615
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.233099479347
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2289054443315
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2403936768608
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2229929996024
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2241385343302
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2229929149855
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2352280764942
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.222992999572
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2270859377822
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2322155463855
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.233267682649
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2198758526645
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2363169633334
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2230459120924
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2276952460256
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2289582474073
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2363178417431
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2258645228908
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.227085241798
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2321641671722
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.227085034631
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.228254865941
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2267758030657
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2292759519244
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2421633112597
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2283186485117
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2247131613112
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2283063644118
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2270842778078
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2253687976342
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2352700120264
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2282667847358
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2317265309066
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2233693005846
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2380095284461
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2282665171663
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2267768257107
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.228266988102
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2326186691178
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.223357204994
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2363518207285
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2233683704635
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2270848959286
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2234088876162
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2267761389992
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2322146169677
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2353399887459
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2283056782321
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2426796292618
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2282543168992
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2294909894727
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2292639053471
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2266076765543
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2428889074497
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2352704660552
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2235043289754
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2267761245419
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2369257666273
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2267768668253
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2235082501757
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2319078955154
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2322922412295
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2265279686537
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2235474575193
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2221706543255
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2293271793126
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2403211243031
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2233559231092
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.226721826237
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2235562897395
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2238852855655
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2234212024157
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2270846832178
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.218195752729
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.228604035204
+Warning: FCIDUMP optional parameter UHF is not found. Use default value 0.
+
+Energy: -1180.2096845073456
+Optimized energy: -1180.4495133792393
+Optimized parameters:  [1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]

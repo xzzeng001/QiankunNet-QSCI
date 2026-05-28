@@ -1,0 +1,275 @@
+#INFO: **** input file is /public/home/xzzeng/work/SHCI/SHCI+NNQS/N2/sto3g/shci/main_shci.py ****
+import sys
+from pyscf import gto, scf,fci
+
+#os.system('cp settings.py /data/home/xzzeng/.local/lib/python3.8/site-packages/pyscf/shciscf/settings.py')
+
+from pyscf.shciscf import shci
+import os
+
+# Initialize N2 molecule
+mol = gto.Mole()
+mol.build(
+        verbose = 5,
+#        output = None,
+        atom = [('N', (0, 0, 0)), ('N', (0, 0, 1.12079733))],
+        basis = 'sto-3g',
+#        symmetry = True,
+#        symmetry_subgroup = 'D2h',
+        spin = 0
+        )
+
+# Create HF molecule
+n_elec=sum(mol.nelec)
+n_orb=mol.nao_nr()
+print('n_elec: ',n_elec)
+print('n_orb: ',n_orb)
+mf = scf.RHF( mol )
+mf.conv_tol = 1e-12
+mf.scf()
+
+# for the FCI energy
+myfci = fci.FCI(mf).run()
+fci_energy=myfci.e_tot
+
+print('fci: ',fci_energy)
+#sys.exit(0)
+
+
+# Number of orbital and electrons
+norb = n_orb
+nelec = n_elec
+
+# Create SHCI molecule for just variational opt.
+# Active spaces chosen to reflect valence active space.
+mch = shci.SHCISCF( mf, norb, nelec )
+mch.fcisolver.mpiprefix = ''
+mch.fcisolver.stochastic = True
+mch.fcisolver.nPTiter = 0
+mch.fcisolver.sweep_iter = [ 3 ]
+mch.fcisolver.DoRDM = True
+mch.fcisolver.sweep_epsilon = [ 1e-3]
+#mch.fcisolver.sweep_epsilon = [ 5e-3, 1e-3 ]
+e_shci = mch.mc1step()[0]
+
+#INFO: ******************** input file end ********************
+
+
+System: uname_result(system='Linux', node='node19', release='4.19.113-15.nfs4.x86_64', version='#1 SMP Fri Oct 29 09:35:29 CST 2021', machine='x86_64', processor='x86_64')  Threads 128
+Python 3.8.8 (default, Apr 13 2021, 19:58:26) 
+[GCC 7.3.0]
+numpy 1.23.0  scipy 1.9.3
+Date: Tue Sep 17 11:28:07 2024
+PySCF version 2.5.0
+PySCF path  /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/pyscf
+
+[ENV] PYSCF_EXT_PATH /public/home/xzzeng/soft/dmrgscf:
+[CONFIG] conf_file None
+[INPUT] verbose = 5
+[INPUT] max_memory = 4000 
+[INPUT] num. atoms = 2
+[INPUT] num. electrons = 14
+[INPUT] charge = 0
+[INPUT] spin (= nelec alpha-beta = 2S) = 0
+[INPUT] symmetry False subgroup None
+[INPUT] Mole.unit = angstrom
+[INPUT] Symbol           X                Y                Z      unit          X                Y                Z       unit  Magmom
+[INPUT]  1 N      0.000000000000   0.000000000000   0.000000000000 AA    0.000000000000   0.000000000000   0.000000000000 Bohr   0.0
+[INPUT]  2 N      0.000000000000   0.000000000000   1.120797330000 AA    0.000000000000   0.000000000000   2.117999994844 Bohr   0.0
+[INPUT] ---------------- BASIS SET ---------------- 
+[INPUT] l, kappa, [nprim/nctr], expnt,             c_1 c_2 ...
+[INPUT] N
+[INPUT] 0    0    [3    /1   ]  99.106169         0.15432897
+                                18.052312         0.53532814
+                                4.8856602         0.44463454
+[INPUT] 0    0    [3    /1   ]  3.7804559         -0.09996723
+                                0.8784966         0.39951283
+                                0.2857144         0.70011547
+[INPUT] 1    0    [3    /1   ]  3.7804559         0.15591627
+                                0.8784966         0.60768372
+                                0.2857144         0.39195739
+
+nuclear repulsion = 23.135033106369
+number of shells = 6
+number of NR pGTOs = 30
+number of NR cGTOs = 10
+basis = sto-3g
+ecp = {}
+CPU time:         2.13
+n_elec:  14
+n_orb:  10
+
+
+******** <class 'pyscf.scf.hf.RHF'> ********
+method = RHF
+initial guess = minao
+damping factor = 0
+level_shift factor = 0
+DIIS = <class 'pyscf.scf.diis.CDIIS'>
+diis_start_cycle = 1
+diis_space = 8
+diis_damp = 0
+SCF conv_tol = 1e-12
+SCF conv_tol_grad = None
+SCF max_cycles = 50
+direct_scf = True
+direct_scf_tol = 1e-13
+chkfile to save SCF result = /tmp/tmpa665xefa
+max_memory 4000 MB (current use 85 MB)
+Set gradient conv threshold to 1e-06
+Initial guess from minao.
+E1 = -192.37055396327253  E_coul = 61.64975580907142
+init E= -107.585765047832
+cond(S) = 10.74761265459199
+    CPU time for initialize scf     19.28 sec, wall time      0.38 sec
+  HOMO = -0.321160910562025  LUMO = 0.153072497305271
+  mo_energy =
+[-15.43968509 -15.43548362  -1.60236886  -0.65227973  -0.4141025
+  -0.4141025   -0.32116091   0.1530725    0.1530725    1.05335335]
+E1 = -191.65167259609342  E_coul = 61.01668775208702
+cycle= 1 E= -107.499951737637  delta_E= 0.0858  |g|= 0.0455  |ddm|= 2.35
+    CPU time for cycle= 1      4.42 sec, wall time      0.04 sec
+  HOMO = -0.532882665986236  LUMO = 0.271182628340858
+  mo_energy =
+[-15.5093096  -15.50769928  -1.42004434  -0.72579033  -0.55673521
+  -0.55673521  -0.53288267   0.27118263   0.27118263   1.07001462]
+E1 = -191.64484966325173  E_coul = 61.00975617709836
+cycle= 2 E= -107.500060379784  delta_E= -0.000109  |g|= 0.00376  |ddm|= 0.0294
+    CPU time for cycle= 2      3.89 sec, wall time      0.03 sec
+  HOMO = -0.533445015398012  LUMO = 0.270984996967061
+  mo_energy =
+[-15.51023223 -15.50867748  -1.42053159  -0.72573431  -0.55714795
+  -0.55714795  -0.53344502   0.270985     0.270985     1.06973116]
+E1 = -191.64330099137212  E_coul = 61.008204476010796
+cycle= 3 E= -107.500063408992  delta_E= -3.03e-06  |g|= 0.000508  |ddm|= 0.007
+    CPU time for cycle= 3      4.42 sec, wall time      0.04 sec
+  HOMO = -0.533559352328873  LUMO = 0.270948996617261
+  mo_energy =
+[-15.51036749 -15.50881331  -1.42067417  -0.72570321  -0.55724437
+  -0.55724437  -0.53355935   0.270949     0.270949     1.0696551 ]
+E1 = -191.64298088223518  E_coul = 61.007884274655716
+cycle= 4 E= -107.50006350121  delta_E= -9.22e-08  |g|= 1.04e-08  |ddm|= 0.00149
+    CPU time for cycle= 4      4.48 sec, wall time      0.04 sec
+  HOMO = -0.533559344605288  LUMO = 0.270949005993316
+  mo_energy =
+[-15.51036744 -15.50881328  -1.42067417  -0.7257032   -0.55724437
+  -0.55724437  -0.53355934   0.27094901   0.27094901   1.06965514]
+E1 = -191.64298087818483  E_coul = 61.00788427060538
+cycle= 5 E= -107.50006350121  delta_E= 2.84e-14  |g|= 7.14e-13  |ddm|= 1.81e-08
+    CPU time for cycle= 5      4.55 sec, wall time      0.04 sec
+  HOMO = -0.533559344604593  LUMO = 0.270949005994043
+  mo_energy =
+[-15.51036744 -15.50881328  -1.42067417  -0.7257032   -0.55724437
+  -0.55724437  -0.53355934   0.27094901   0.27094901   1.06965514]
+E1 = -191.64298087818455  E_coul = 61.00788427060508
+Extra cycle  E= -107.50006350121  delta_E= -2.84e-14  |g|= 1.6e-13  |ddm|= 1.53e-12
+    CPU time for scf_cycle     45.80 sec, wall time      0.60 sec
+    CPU time for SCF     45.80 sec, wall time      0.60 sec
+converged SCF energy = -107.50006350121
+davidson 0 1  |r|= 0.598  e= [-130.6350966]  max|de|= -131  lindep=    1
+davidson 1 2  |r|= 0.239  e= [-130.77857147]  max|de|= -0.143  lindep= 0.996
+davidson 2 3  |r|= 0.0638  e= [-130.79762216]  max|de|= -0.0191  lindep= 0.989
+davidson 3 4  |r|= 0.0226  e= [-130.79885074]  max|de|= -0.00123  lindep= 0.98
+davidson 4 5  |r|= 0.00662  e= [-130.79900893]  max|de|= -0.000158  lindep= 0.951
+davidson 5 6  |r|= 0.00159  e= [-130.79902362]  max|de|= -1.47e-05  lindep= 0.957
+davidson 6 7  |r|= 0.000376  e= [-130.79902448]  max|de|= -8.63e-07  lindep= 0.975
+davidson 7 8  |r|= 0.000141  e= [-130.79902453]  max|de|= -4.69e-08  lindep= 0.954
+davidson 8 9  |r|= 4.24e-05  e= [-130.79902454]  max|de|= -6.93e-09  lindep= 0.937
+davidson 9 10  |r|= 1.35e-05  e= [-130.79902454]  max|de|= -5.36e-10  lindep= 0.951
+root 0 converged  |r|= 3.68e-06  e= -130.7990245375063  max|de|= -5.68e-11
+converged 10 11  |r|= 3.68e-06  e= [-130.79902454]  max|de|= -5.68e-11
+fci:  -107.6639914311373
+
+******** <class 'pyscf.mcscf.mc1step.CASSCF'> ********
+CAS (7e+7e, 10o), ncore = 0, nvir = 0
+max_cycle_macro = 50
+max_cycle_micro = 4
+conv_tol = 1e-07
+conv_tol_grad = None
+orbital rotation max_stepsize = 0.02
+orbital rotation threshold for CI restart = 0.01
+augmented hessian ah_max_cycle = 30
+augmented hessian ah_conv_tol = 1e-12
+augmented hessian ah_linear dependence = 1e-14
+augmented hessian ah_level shift = 1e-08
+augmented hessian ah_start_tol = 2.5
+augmented hessian ah_start_cycle = 3
+augmented hessian ah_grad_trust_region = 3
+kf_trust_region = 3
+kf_interval = 4
+ci_response_space = 4
+ci_grad_trust_region = 3
+with_dep4 0
+natorb = False
+canonicalization = True
+sorting_mo_energy = False
+ao2mo_level = 2
+chkfile = ./tmp30cwo1fe
+max_memory 4000 MB (current use 593 MB)
+internal_rotation = False
+
+******** SHCI flags ********
+executable             = /public/home/xzzeng/soft/Dice/Dice
+mpiprefix              = 
+scratchDirectory       = .
+integralFile           = ./FCIDUMP
+configFile             = ./input.dat
+outputFile             = ./output.dat
+maxIter                = 6
+sweep_iter             = [    3]
+sweep_epsilon          = [0.001]
+nPTiter                = 0
+Stochastic             = True
+restart                = False
+fullrestart            = False
+num_thrds              = 1
+memory                 = None
+
+Start 1-step CASSCF
+Start CASCI
+    CPU time for integral transformation to CAS space      0.00 sec, wall time      0.00 sec
+core energy = 23.135033106369
+    CPU time for effective h1e in CAS space      0.00 sec, wall time      0.00 sec
+    CPU time for FCI solver      0.42 sec, wall time      5.82 sec
+CAS space CI energy = -130.798889188838
+CASCI E = -107.663856082469  S^2 = 0.0000000
+Set conv_tol_grad to 0.000316228
+    CPU time for Initializing 1-step CASSCF     60.25 sec, wall time      6.31 sec
+    CPU time for CAS DM      0.00 sec, wall time      0.00 sec
+    |g|=    0
+    CPU time for gen h_op     33.57 sec, wall time      0.28 sec
+    CPU time for orbital rotation     33.91 sec, wall time      0.29 sec
+    CPU time for update CAS DM     37.56 sec, wall time      6.06 sec
+micro  1  |u-1|=    0  |g[o]|=    0  |g[c]|=None  |ddm|=    0
+    CPU time for micro iter  1      0.00 sec, wall time      0.00 sec
+Active space overlap to initial guess, SVD = [1. 1. 1. 1. 1. 1. 1. 1. 1. 1.]
+Active space overlap to last step, SVD = [1. 1. 1. 1. 1. 1. 1. 1. 1. 1.]
+    CPU time for update eri     55.94 sec, wall time      0.46 sec
+Start CASCI
+    CPU time for integral transformation to CAS space      0.00 sec, wall time      0.00 sec
+core energy = 23.135033106369
+    CPU time for effective h1e in CAS space      0.00 sec, wall time      0.00 sec
+Do FCI restart
+    CPU time for FCI solver      0.79 sec, wall time      5.67 sec
+CAS space CI energy = -130.798889188838
+macro iter   1 (  1 JK    1 micro), CASSCF E = -107.663856082469  dE =  0.00000000e+00  S^2 = 0.0000000
+               |grad[o]|=    0  |ddm|=    0  |maxRot[o]|=    0
+    CPU time for CASCI solver      5.38 sec, wall time      5.71 sec
+    CPU time for macro iter  1    132.80 sec, wall time     12.52 sec
+1-step CASSCF converged in   1 macro (  1 JK   1 micro) steps
+CASSCF canonicalization
+Density matrix diagonal elements [1.99999024 1.99999333 1.99110004 1.98647153 1.92655528 1.92655528
+ 1.98455321 0.08186805 0.08186805 0.02104507]
+i = 1  <i|F|i> = -15.50130660
+i = 2  <i|F|i> = -15.49986093
+i = 3  <i|F|i> =  -1.41410859
+i = 4  <i|F|i> =  -0.72013432
+i = 5  <i|F|i> =  -0.54121728
+i = 6  <i|F|i> =  -0.54121728
+i = 7  <i|F|i> =  -0.52600843
+i = 8  <i|F|i> =   0.25715260
+i = 9  <i|F|i> =   0.25715260
+i = 10  <i|F|i> =   1.06475385
+    CPU time for 1-step CASSCF    199.56 sec, wall time     18.90 sec
+CASSCF energy = -107.663856082469
+CASCI E = -107.663856082469  E(CI) = -130.798889188838  S^2 = 0.0000000

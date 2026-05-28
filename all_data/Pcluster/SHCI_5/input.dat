@@ -1,0 +1,29 @@
+#system
+nocc 114
+1 3 5 7 9 11 13 15 17 19 21 23 25 27 29 33 39 41 43 45 47 49 53 57 59 63 67 69 71 73 75 77 79 81 83 85 87 89 93 97 101 103 105 107 109 111 113 115 117 121 123 125 133 135 139 141 145 0 2 4 6 8 18 20 22 24 26 28 30 32 34 36 40 42 44 46 48 50 52 54 58 64 66 68 70 72 74 76 78 80 90 92 94 96 98 102 104 106 108 110 112 114 116 118 120 126 128 130 132 134 136 140 142 144
+end
+orbitals ./FCIDUMP
+nroots 1
+
+#variational
+schedule 
+3	0.00008
+end
+davidsonTol 5e-05
+dE 1e-08
+maxiter 9
+
+#pt
+nPTiter 0
+epsilon2 1e-07
+epsilon2Large 1000
+targetError 0.0001
+sampleN 200
+
+#misc
+io 
+prefix /public/home/xzzeng/work/SHCI/SHCI+NNQS/PCluster/SHCI_5 
+DoOneRDM
+DoSpinOneRDM
+DoRDM
+

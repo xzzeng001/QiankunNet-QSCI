@@ -1,0 +1,345 @@
+#INFO: **** input file is /public/home/xzzeng/work/SHCI/SHCI+NNQS/H10/ring/simulation/main.py ****
+import numpy as np
+
+def get_h10ring_geom(r):
+    phi_o = 2 * np.pi / 10
+    rad_denom = 2 * np.sin(np.pi/10)
+    rad = r / rad_denom
+
+    a1x = rad * np.cos(phi_o * 0)
+    a2x = rad * np.cos(phi_o * 1)
+    a3x = rad * np.cos(phi_o * 2)
+    a4x = rad * np.cos(phi_o * 3)
+    a5x = rad * np.cos(phi_o * 4)
+    a6x = rad * np.cos(phi_o * 5)
+    a7x = rad * np.cos(phi_o * 6)
+    a8x = rad * np.cos(phi_o * 7)
+    a9x = rad * np.cos(phi_o * 8)
+    a10x = rad * np.cos(phi_o * 9)
+
+
+    a1y = rad * np.sin(phi_o * 0)
+    a2y = rad * np.sin(phi_o * 1)
+    a3y = rad * np.sin(phi_o * 2)
+    a4y = rad * np.sin(phi_o * 3)
+    a5y = rad * np.sin(phi_o * 4)
+    a6y = rad * np.sin(phi_o * 5)
+    a7y = rad * np.sin(phi_o * 6)
+    a8y = rad * np.sin(phi_o * 7)
+    a9y = rad * np.sin(phi_o * 8)
+    a10y = rad * np.sin(phi_o * 9)
+
+    g1 = '         '
+    g2 = '     '
+
+    geom =  'H' + g1 + str(a1x)  + g2 + str(a1y)  + g2 + str(0.00)  + '\n' + \
+            'H' + g1 + str(a2x)  + g2 + str(a2y)  + g2 + str(0.00)  + '\n' + \
+            'H' + g1 + str(a3x)  + g2 + str(a3y)  + g2 + str(0.00)  + '\n' + \
+            'H' + g1 + str(a4x)  + g2 + str(a4y)  + g2 + str(0.00)  + '\n' + \
+            'H' + g1 + str(a5x)  + g2 + str(a5y)  + g2 + str(0.00)  + '\n' + \
+            'H' + g1 + str(a6x)  + g2 + str(a6y)  + g2 + str(0.00)  + '\n' + \
+            'H' + g1 + str(a7x)  + g2 + str(a7y)  + g2 + str(0.00)  + '\n' + \
+            'H' + g1 + str(a8x)  + g2 + str(a8y)  + g2 + str(0.00)  + '\n' + \
+            'H' + g1 + str(a9x)  + g2 + str(a9y)  + g2 + str(0.00)  + '\n' + \
+            'H' + g1 + str(a10x) + g2 + str(a10y) + g2 + str(0.00)
+
+    return geom
+
+
+import pyscf
+import pyscf.mcscf
+from pyscf import gto
+
+import ffsim
+
+# Build an ethene molecule
+# Initialize N2 molecule
+mol = gto.Mole()
+mol.build(
+        verbose = 5,
+        atom = get_h10ring_geom(1.0),
+        basis = 'sto-6g',
+        spin = 0)
+
+n_elec=sum(mol.nelec)
+n_orb=mol.nao_nr()
+print('n_elec: ',n_elec)
+print('n_orb: ',n_orb)
+print('n_qubits: ',2*n_orb)
+
+# Get molecular data and molecular Hamiltonian (one- and two-body tensors)
+scf = pyscf.scf.RHF(mol).run()
+mol_data = ffsim.MolecularData.from_scf(scf)
+norb = mol_data.norb
+nelec = mol_data.nelec
+mol_hamiltonian = mol_data.hamiltonian
+
+# Compute FCI energy
+mol_data.run_fci()
+
+import numpy as np
+from pyscf import cc
+
+# Get CCSD t2 amplitudes for initializing the ansatz
+ccsd = cc.CCSD(scf).run()
+
+pairs_aa = [(3, 5),(4, 6)]
+pairs_ab = [(4, 5)]
+interaction_pairs = (pairs_aa, pairs_ab)
+
+# Construct UCJ operator
+n_reps = 1
+operator = ffsim.UCJOpSpinBalanced.from_t_amplitudes(ccsd.t2, n_reps=n_reps,interaction_pairs=interaction_pairs)
+
+# Construct the Hartree-Fock state to use as the reference state
+reference_state = ffsim.hartree_fock_state(norb, nelec)
+
+# Apply the operator to the reference state
+ansatz_state = ffsim.apply_unitary(reference_state, operator, norb=norb, nelec=nelec)
+
+# Compute the energy ⟨ψ|H|ψ⟩ of the ansatz state
+hamiltonian = ffsim.linear_operator(mol_hamiltonian, norb=norb, nelec=nelec)
+energy = np.real(np.vdot(ansatz_state, hamiltonian @ ansatz_state))
+print(f"Energy at initialization: {energy}")
+
+import scipy.optimize
+
+def fun(x):
+    # Initialize the ansatz operator from the parameter vector
+    operator = ffsim.UCJOpSpinBalanced.from_parameters(x, norb=norb, n_reps=n_reps)
+    # Apply the ansatz operator to the reference state
+    final_state = ffsim.apply_unitary(reference_state, operator, norb=norb, nelec=nelec)
+    # Return the energy ⟨ψ|H|ψ⟩ of the ansatz state
+    return np.real(np.vdot(final_state, hamiltonian @ final_state))
+
+
+# 定义 callback 函数用于每步输出
+energies = []  # 用于存储每一步的能量
+
+def callback(xk):
+    energy = fun(xk)
+    energies.append(energy)
+    print(f"Iteration: {len(energies)}, Energy: {energy}")
+
+# 优化过程
+result = scipy.optimize.minimize(fun, 
+    x0=operator.to_parameters(), 
+    method="L-BFGS-B", 
+    options={'ftol': 1e-10,'maxiter':1000} ,#dict(maxiter=1000),
+    callback=callback)
+
+# 优化结果
+print("Optimization completed. Final energy:", result.fun)
+
+# 保存最终参数
+final_parameters = result.x
+np.save("final_parameters.npy", final_parameters)
+print("Final parameters saved to final_parameters.npy")
+#INFO: ******************** input file end ********************
+
+
+System: uname_result(system='Linux', node='node16', release='4.19.113-15.nfs4.x86_64', version='#1 SMP Fri Oct 29 09:35:29 CST 2021', machine='x86_64', processor='x86_64')  Threads 128
+Python 3.8.8 (default, Apr 13 2021, 19:58:26) 
+[GCC 7.3.0]
+numpy 1.23.0  scipy 1.9.3
+Date: Wed Oct  2 14:27:32 2024
+PySCF version 2.5.0
+PySCF path  /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/pyscf
+
+[ENV] PYSCF_EXT_PATH /public/home/xzzeng/soft/dmrgscf:
+[CONFIG] conf_file None
+[INPUT] verbose = 5
+[INPUT] max_memory = 4000 
+[INPUT] num. atoms = 10
+[INPUT] num. electrons = 10
+[INPUT] charge = 0
+[INPUT] spin (= nelec alpha-beta = 2S) = 0
+[INPUT] symmetry False subgroup None
+[INPUT] Mole.unit = angstrom
+[INPUT] Symbol           X                Y                Z      unit          X                Y                Z       unit  Magmom
+[INPUT]  1 H      1.618033988750   0.000000000000   0.000000000000 AA    3.057641098975   0.000000000000   0.000000000000 Bohr   0.0
+[INPUT]  2 H      1.309016994375   0.951056516295   0.000000000000 AA    2.473683611770   1.797236344781   0.000000000000 Bohr   0.0
+[INPUT]  3 H      0.500000000000   1.538841768588   0.000000000000 AA    0.944863062283   2.907989491672   0.000000000000 Bohr   0.0
+[INPUT]  4 H     -0.500000000000   1.538841768588   0.000000000000 AA   -0.944863062283   2.907989491672   0.000000000000 Bohr   0.0
+[INPUT]  5 H     -1.309016994375   0.951056516295   0.000000000000 AA   -2.473683611770   1.797236344781   0.000000000000 Bohr   0.0
+[INPUT]  6 H     -1.618033988750   0.000000000000   0.000000000000 AA   -3.057641098975   0.000000000000   0.000000000000 Bohr   0.0
+[INPUT]  7 H     -1.309016994375  -0.951056516295   0.000000000000 AA   -2.473683611770  -1.797236344781   0.000000000000 Bohr   0.0
+[INPUT]  8 H     -0.500000000000  -1.538841768588   0.000000000000 AA   -0.944863062283  -2.907989491672   0.000000000000 Bohr   0.0
+[INPUT]  9 H      0.500000000000  -1.538841768588   0.000000000000 AA    0.944863062283  -2.907989491672   0.000000000000 Bohr   0.0
+[INPUT] 10 H      1.309016994375  -0.951056516295   0.000000000000 AA    2.473683611770  -1.797236344781   0.000000000000 Bohr   0.0
+[INPUT] ---------------- BASIS SET ---------------- 
+[INPUT] l, kappa, [nprim/nctr], expnt,             c_1 c_2 ...
+[INPUT] H
+[INPUT] 0    0    [6    /1   ]  35.52322122       0.00916359628
+                                6.513143725       0.04936149294
+                                1.822142904       0.1685383049
+                                0.625955266       0.3705627997
+                                0.243076747       0.4164915298
+                                0.100112428       0.1303340841
+
+nuclear repulsion = 12.6321231725525
+number of shells = 10
+number of NR pGTOs = 60
+number of NR cGTOs = 10
+basis = sto-6g
+ecp = {}
+CPU time:         2.30
+n_elec:  10
+n_orb:  10
+n_qubits:  20
+
+
+******** <class 'pyscf.scf.hf.RHF'> ********
+method = RHF
+initial guess = minao
+damping factor = 0
+level_shift factor = 0
+DIIS = <class 'pyscf.scf.diis.CDIIS'>
+diis_start_cycle = 1
+diis_space = 8
+diis_damp = 0
+SCF conv_tol = 1e-09
+SCF conv_tol_grad = None
+SCF max_cycles = 50
+direct_scf = True
+direct_scf_tol = 1e-13
+chkfile to save SCF result = /tmp/tmprznnx9jm
+max_memory 4000 MB (current use 134 MB)
+Set gradient conv threshold to 3.16228e-05
+Initial guess from minao.
+E1 = -29.756934700425845  E_coul = 12.749605403138677
+init E= -4.37520612473465
+cond(S) = 10.716099101190643
+    CPU time for initialize scf     22.94 sec, wall time      0.47 sec
+  HOMO = -0.226438322771974  LUMO = 0.246039141488855
+  mo_energy =
+[-0.81772077 -0.60684291 -0.60684291 -0.22643832 -0.22643832  0.24603914
+  0.24603914  0.78588457  0.78588457  1.09175515]
+E1 = -30.57367711843138  E_coul = 12.666102093569217
+cycle= 1 E= -5.27545185230964  delta_E= -0.9  |g|= 2.4e-15  |ddm|= 2.29
+    CPU time for cycle= 1      3.78 sec, wall time      0.03 sec
+  HOMO = -0.328748178998659  LUMO = 0.294752946385174
+  mo_energy =
+[-0.72448826 -0.61937593 -0.61937593 -0.32874818 -0.32874818  0.29475295
+  0.29475295  0.85043078  0.85043078  1.15903425]
+E1 = -30.573677118431384  E_coul = 12.666102093569222
+cycle= 2 E= -5.27545185230964  delta_E=    0  |g|= 3.25e-15  |ddm|= 6.74e-15
+    CPU time for cycle= 2      4.38 sec, wall time      0.04 sec
+  HOMO = -0.328748178998659  LUMO = 0.294752946385174
+  mo_energy =
+[-0.72448826 -0.61937593 -0.61937593 -0.32874818 -0.32874818  0.29475295
+  0.29475295  0.85043078  0.85043078  1.15903425]
+E1 = -30.57367711843142  E_coul = 12.666102093569252
+Extra cycle  E= -5.27545185230965  delta_E= -7.11e-15  |g|= 3.65e-15  |ddm|= 9.58e-15
+    CPU time for scf_cycle     35.56 sec, wall time      0.58 sec
+    CPU time for SCF     35.57 sec, wall time      0.58 sec
+converged SCF energy = -5.27545185230965
+CASCI E = -5.42295843244762  E(CI) = -18.0550816050001  S^2 = 0.0000000
+
+******** <class 'pyscf.cc.ccsd.CCSD'> ********
+CC2 = 0
+CCSD nocc = 5, nmo = 10
+max_cycle = 50
+direct = 0
+conv_tol = 1e-07
+conv_tol_normt = 1e-05
+diis_space = 6
+diis_start_cycle = 0
+diis_start_energy_diff = 1e+09
+max_memory 4000 MB (current use 538 MB)
+E1 = -30.57367711843142  E_coul = 12.666102093569252
+    CPU time for CCSD integral transformation     10.89 sec, wall time      0.09 sec
+Init t2, MP2 energy = -5.38269624631207  E_corr(MP2) -0.107244394002416
+    CPU time for init mp2      0.00 sec, wall time      0.00 sec
+Init E_corr(CCSD) = -0.107244394002416
+cycle = 1  E_corr(CCSD) = -0.127548075233094  dE = -0.0203036812  norm(t1,t2) = 0.0510087
+    CPU time for CCSD iter      1.00 sec, wall time      0.01 sec
+cycle = 2  E_corr(CCSD) = -0.136038128461152  dE = -0.00849005323  norm(t1,t2) = 0.0280002
+    CPU time for CCSD iter      0.51 sec, wall time      0.01 sec
+cycle = 3  E_corr(CCSD) = -0.143768096520331  dE = -0.00772996806  norm(t1,t2) = 0.0151373
+    CPU time for CCSD iter      1.02 sec, wall time      0.01 sec
+cycle = 4  E_corr(CCSD) = -0.144075273997951  dE = -0.000307177478  norm(t1,t2) = 0.00159392
+    CPU time for CCSD iter      0.51 sec, wall time      0.01 sec
+cycle = 5  E_corr(CCSD) = -0.14393004923708  dE = 0.000145224761  norm(t1,t2) = 0.000474266
+    CPU time for CCSD iter      0.51 sec, wall time      0.01 sec
+cycle = 6  E_corr(CCSD) = -0.143952373596314  dE = -2.23243592e-05  norm(t1,t2) = 0.000111256
+    CPU time for CCSD iter      1.53 sec, wall time      0.01 sec
+cycle = 7  E_corr(CCSD) = -0.14395369203445  dE = -1.31843814e-06  norm(t1,t2) = 1.68447e-05
+    CPU time for CCSD iter      2.56 sec, wall time      0.02 sec
+cycle = 8  E_corr(CCSD) = -0.143953140218319  dE = 5.51816131e-07  norm(t1,t2) = 2.02719e-06
+    CPU time for CCSD iter      1.80 sec, wall time      0.01 sec
+cycle = 9  E_corr(CCSD) = -0.143953048747665  dE = 9.14706542e-08  norm(t1,t2) = 3.95152e-07
+    CPU time for CCSD iter      1.49 sec, wall time      0.01 sec
+    CPU time for CCSD     10.94 sec, wall time      0.09 sec
+CCSD converged
+E(CCSD) = -5.419404901057314  E_corr = -0.1439530487476648
+Energy at initialization: -5.2754808285185595
+Iteration: 1, Energy: -5.331171690006843
+Iteration: 2, Energy: -5.336430353741144
+Iteration: 3, Energy: -5.339021454249324
+Iteration: 4, Energy: -5.339728493908137
+Iteration: 5, Energy: -5.33982849767762
+Iteration: 6, Energy: -5.339975369342387
+Iteration: 7, Energy: -5.340073512963142
+Iteration: 8, Energy: -5.340222581193712
+Iteration: 9, Energy: -5.340363630928037
+Iteration: 10, Energy: -5.340554238382171
+Iteration: 11, Energy: -5.34063922674133
+Iteration: 12, Energy: -5.340836702144108
+Iteration: 13, Energy: -5.3409006116454965
+Iteration: 14, Energy: -5.340998434186224
+Iteration: 15, Energy: -5.341147835106619
+Iteration: 16, Energy: -5.341302010573209
+Iteration: 17, Energy: -5.341340135144599
+Iteration: 18, Energy: -5.341391604235764
+Iteration: 19, Energy: -5.341423860677799
+Iteration: 20, Energy: -5.341455745761016
+Iteration: 21, Energy: -5.341509189875135
+Iteration: 22, Energy: -5.341572216806453
+Iteration: 23, Energy: -5.341638835584698
+Iteration: 24, Energy: -5.341757764507335
+Iteration: 25, Energy: -5.341827418620108
+Iteration: 26, Energy: -5.341927223904931
+Iteration: 27, Energy: -5.342005507351538
+Iteration: 28, Energy: -5.34206765288697
+Iteration: 29, Energy: -5.342192074286161
+Iteration: 30, Energy: -5.342424674484128
+Iteration: 31, Energy: -5.342760210375729
+Iteration: 32, Energy: -5.34299905855246
+Iteration: 33, Energy: -5.343424096027
+Iteration: 34, Energy: -5.343774614069219
+Iteration: 35, Energy: -5.343999832143396
+Iteration: 36, Energy: -5.344413353443724
+Iteration: 37, Energy: -5.344732326607122
+Iteration: 38, Energy: -5.3450388128226844
+Iteration: 39, Energy: -5.345351230077579
+Iteration: 40, Energy: -5.345562875085968
+Iteration: 41, Energy: -5.345887453807421
+Iteration: 42, Energy: -5.346183230556648
+Iteration: 43, Energy: -5.346361471126786
+Iteration: 44, Energy: -5.346803695786388
+Iteration: 45, Energy: -5.347198017870164
+Iteration: 46, Energy: -5.347589708448244
+Iteration: 47, Energy: -5.348213165422247
+Iteration: 48, Energy: -5.348440825735997
+Iteration: 49, Energy: -5.348965617244926
+Iteration: 50, Energy: -5.3491994952931465
+Iteration: 51, Energy: -5.349571497829633
+Iteration: 52, Energy: -5.350056214285639
+Iteration: 53, Energy: -5.350474785288235
+Iteration: 54, Energy: -5.350862790448568
+Iteration: 55, Energy: -5.351077883541539
+Iteration: 56, Energy: -5.351260361431009
+Iteration: 57, Energy: -5.3516273274117525
+Iteration: 58, Energy: -5.351902926329038
+Iteration: 59, Energy: -5.35216486217908
+Iteration: 60, Energy: -5.3524031122222695
+Iteration: 61, Energy: -5.352849660441528
+Iteration: 62, Energy: -5.353311411224453
+Iteration: 63, Energy: -5.353879034850025
+Iteration: 64, Energy: -5.354607327143571
+Iteration: 65, Energy: -5.35494720054474
+Iteration: 66, Energy: -5.355554847397133
+Iteration: 67, Energy: -5.356436543634904
+Optimization completed. Final energy: -5.3564365436348975
+Final parameters saved to final_parameters.npy

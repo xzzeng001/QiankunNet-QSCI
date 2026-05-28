@@ -1,0 +1,10 @@
+time for load_ci_data: 26.1231s
+time for make_strings: 0.3554s
+time for build_ci_vector_fast: 380.2749s
+main.py:153: RuntimeWarning: invalid value encountered in divide
+  # 原始脚本里的 occ 构造（shape = (n_det, 2*norb)）
+Traceback (most recent call last):
+  File "main.py", line 202, in <module>
+  File "main.py", line 156, in main
+    for ib, b in enumerate(strs_b):
+numpy.core._exceptions.MemoryError: Unable to allocate 9.93 TiB for an array with shape (34134779536, 40) and data type int64

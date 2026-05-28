@@ -1,0 +1,243 @@
+clear; clc; 
+
+%% -------------------- 1. Read data --------------------
+% out_entropy.dat: header + 2 columns
+entropyStruct = importdata('out_entropy.dat');
+entropyData   = entropyStruct.data;
+orbitalIdx    = entropyData(:,1);
+entropyVals   = entropyData(:,2);
+
+% out_excitation.dat: header + 2 columns
+excStruct     = importdata('out_excitation.dat');
+excData       = excStruct.data;
+excRank       = excData(:,1);
+excCount      = excData(:,2);
+
+% out_mutual.dat: NxN matrix
+mutualData    = load('out_mutual.dat');
+
+N = numel(orbitalIdx);
+
+% basic consistency check
+if size(mutualData,1) ~= N || size(mutualData,2) ~= N
+    error('Dimension mismatch: out_mutual.dat must be an NxN matrix consistent with out_entropy.dat.');
+end
+
+%% -------------------- 2. Global style --------------------
+fontName   = 'Arial';   % more journal-like than default MATLAB font
+axisFS     = 10;
+labelFS    = 24;
+panelFS    = 25;
+
+% accent colors
+barColor   = [0.34, 0.70, 0.84];   % soft cyan-blue
+dotColor   = [0.19, 0.86, 0.24];   % vivid but controlled green
+nodeColor  = [0.10, 0.75, 0.75];   % teal
+nodeEdge   = [0.25, 0.42, 0.42];   % dark teal-gray
+refGray    = [0.45, 0.45, 0.45];
+
+%% -------------------- 3. Create figure layout --------------------
+fig = figure('Color','w', ...
+             'Units','centimeters', ...
+             'Position',[2,2,17.2,9.6], ...
+             'Renderer','painters');
+
+% 2x3 layout:
+% (a) at tile 1
+% (b) at tile 4
+% (c) spans tiles [2 3; 5 6]
+tlo = tiledlayout(2,3,'TileSpacing','compact','Padding','compact');
+
+%% ============================================================
+%  Panel (a): excitation-rank distribution
+%% ============================================================
+axA = nexttile(tlo,1);
+hold(axA,'on');
+
+% Since the data are already aggregated by rank, use bar chart
+b = bar(axA, excRank, excCount, 0.95, ...
+    'FaceColor', barColor, ...
+    'EdgeColor', [0.78, 0.78, 0.78], ...
+    'LineWidth', 0.8);
+
+xlim(axA, [min(excRank)-0.7, max(excRank)+0.7]);
+
+xlabel(axA, 'Excitation rank', 'FontName', fontName, 'FontSize', labelFS);
+ylabel(axA, 'Configuration counts', 'FontName', fontName, 'FontSize', labelFS);
+
+formatAxes(axA, fontName, axisFS);
+axA.YAxis.Exponent = 6;   % show ×10^6 style if needed
+
+text(axA, 0.02, 0.95, '(a)', ...
+    'Units','normalized', ...
+    'FontName', fontName, ...
+    'FontSize', panelFS, ...
+    'FontWeight','normal', ...
+    'HorizontalAlignment','left', ...
+    'VerticalAlignment','top');
+
+set(gca,'fontsize',20)
+
+%% ============================================================
+%  Panel (b): single-orbital entropy
+%% ============================================================
+axB = nexttile(tlo,4);
+hold(axB,'on');
+
+% lollipop-style plot
+stemLineColor = [0.72, 0.88, 0.88];
+
+for i = 1:N
+    plot(axB, [orbitalIdx(i), orbitalIdx(i)], [0, entropyVals(i)], ':', ...
+        'Color', stemLineColor, 'LineWidth', 0.9,'Markersize',12);
+end
+
+scatter(axB, orbitalIdx, entropyVals, 100, ...
+    'o', ...
+    'MarkerFaceColor', dotColor, ...
+    'MarkerEdgeColor', [0.15, 0.45, 0.15], ...
+    'LineWidth', 0.7);
+
+% maximum possible entropy line
+yRef = log(2);
+plot(axB, [min(orbitalIdx), max(orbitalIdx)], [yRef, yRef], '--', ...
+    'Color', refGray, 'LineWidth', 1.2, 'HandleVisibility','off');
+
+text(axB, 6.5, yRef + 0.03, 'Maximum possible entropy ln2 = 0.6931', ...
+    'FontName', fontName, 'FontSize', 20, 'Color', [0.15 0.15 0.15]);
+
+xlim(axB, [min(orbitalIdx)-0.5, max(orbitalIdx)+0.5]);
+ylim(axB, [0, 1.0]);
+
+xlabel(axB, 'Orbital index', 'FontName', fontName, 'FontSize', labelFS);
+ylabel(axB, 'Entropy (arb. unit)', 'FontName', fontName, 'FontSize', labelFS);
+
+formatAxes(axB, fontName, axisFS);
+
+text(axB, 0.02, 0.92, '(b)', ...
+    'Units','normalized', ...
+    'FontName', fontName, ...
+    'FontSize', panelFS, ...
+    'FontWeight','normal', ...
+    'HorizontalAlignment','left', ...
+    'VerticalAlignment','top');
+
+set(gca,'fontsize',20)
+
+%% ============================================================
+%  Panel (c): mutual-information network
+%% ============================================================
+axC = nexttile(tlo,2,[2 2]);
+hold(axC,'on');
+axis(axC,'equal');
+axis(axC,'off');
+
+% ---------- Node positions on a circle ----------
+R = 1.0;
+theta = linspace(0, 2*pi, N+1);
+theta = theta(1:N);   % remove duplicate endpoint
+
+x = R * cos(theta);
+y = R * sin(theta);
+
+% subtle outer guide circle
+tt = linspace(0, 2*pi, 400);
+plot(axC, 1.03*cos(tt), 1.03*sin(tt), '-', ...
+    'Color', [0.88, 0.88, 0.88], 'LineWidth', 1.0);
+
+% ---------- Select only strongest off-diagonal edges ----------
+% IMPORTANT:
+% Do not use all edges, otherwise the figure becomes unreadable.
+offMask = triu(true(N), 1);
+offVals = mutualData(offMask);
+
+% Keep strongest 20% edges (can tune between 93 and 97)
+edgePercentile = 80;
+edgeThreshold  = prctile(offVals, edgePercentile);
+
+[rowIdx, colIdx] = find(triu(mutualData,1) >= edgeThreshold);
+edgeWeights = mutualData(sub2ind(size(mutualData), rowIdx, colIdx));
+
+% sort weak -> strong so strongest edges are drawn on top
+[edgeWeights, sortOrder] = sort(edgeWeights, 'ascend');
+rowIdx = rowIdx(sortOrder);
+colIdx = colIdx(sortOrder);
+
+% ---------- Edge visual mapping ----------
+% Light gray -> dark gray
+lightGray = [0.82, 0.82, 0.82];
+darkGray  = [0.22, 0.22, 0.22];
+
+wMin = min(edgeWeights);
+wMax = max(edgeWeights);
+
+for k = 1:numel(edgeWeights)
+    t = (edgeWeights(k) - wMin) / (wMax - wMin + eps);  % 0 -> 1
+    
+    edgeColor = (1-t) * lightGray + t * darkGray;
+    edgeWidth = 0.35 + 2.20 * (t^0.9);
+    
+    plot(axC, [x(rowIdx(k)), x(colIdx(k))], [y(rowIdx(k)), y(colIdx(k))], '-', ...
+        'Color', edgeColor, 'LineWidth', edgeWidth);
+end
+
+% ---------- Node size mapping ----------
+% Use normalized entropy to avoid over-large circles
+sNorm = (entropyVals - min(entropyVals)) ./ (max(entropyVals) - min(entropyVals) + eps);
+
+% scatter size uses points^2
+nodeSize = 500 + 850 * (sNorm .^ 0.85);
+
+scatter(axC, x, y, nodeSize, ...
+    'filled', ...
+    'MarkerFaceColor', nodeColor, ...
+    'MarkerEdgeColor', nodeEdge, ...
+    'LineWidth', 0.9);
+
+% ---------- Node labels ----------
+for i = 1:N
+    fs = 8.0 + 1.0 * sNorm(i);
+    text(axC, x(i), y(i), num2str(orbitalIdx(i)), ...
+        'HorizontalAlignment','center', ...
+        'VerticalAlignment','middle', ...
+        'FontName', fontName, ...
+        'FontSize', 15, ...
+        'FontWeight','bold', ...
+        'Color','w');
+end
+
+xlim(axC, 1.18*[-1, 1]);
+ylim(axC, 1.18*[-1, 1]);
+
+text(axC, 0.02, 0.97, '(c)', ...
+    'Units','normalized', ...
+    'FontName', fontName, ...
+    'FontSize', panelFS, ...
+    'FontWeight','normal', ...
+    'HorizontalAlignment','left', ...
+    'VerticalAlignment','top');
+
+%% -------------------- 4. Export --------------------
+exportgraphics(fig, 'entropy_mutual_figure_nature_style.png', 'Resolution', 600);
+exportgraphics(fig, 'entropy_mutual_figure_nature_style.pdf', 'ContentType', 'vector');
+
+disp('Done. Files exported:');
+disp('  - entropy_mutual_figure_nature_style.png');
+disp('  - entropy_mutual_figure_nature_style.pdf');
+
+%% ============================================================
+%  Local function
+%% ============================================================
+function formatAxes(ax, fontName, fontSize)
+    set(ax, ...
+        'Box', 'on', ...
+        'LineWidth', 2.0, ...
+        'FontName', fontName, ...
+        'FontSize', fontSize, ...
+        'TickDir', 'in', ...
+        'TickLength', [0.018, 0.018], ...
+        'Layer', 'top', ...
+        'XMinorTick', 'on', ...
+        'YMinorTick', 'on', ...
+        'Color', 'none');
+end

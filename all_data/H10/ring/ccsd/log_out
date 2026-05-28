@@ -1,0 +1,535 @@
+#INFO: **** input file is /public/home/xzzeng/work/SHCI/SHCI+NNQS/H10/ring/ccsd/main.py ****
+import numpy as np
+
+def get_h10ring_geom(r):
+    phi_o = 2 * np.pi / 10
+    rad_denom = 2 * np.sin(np.pi/10)
+    rad = r / rad_denom
+
+    a1x = rad * np.cos(phi_o * 0)
+    a2x = rad * np.cos(phi_o * 1)
+    a3x = rad * np.cos(phi_o * 2)
+    a4x = rad * np.cos(phi_o * 3)
+    a5x = rad * np.cos(phi_o * 4)
+    a6x = rad * np.cos(phi_o * 5)
+    a7x = rad * np.cos(phi_o * 6)
+    a8x = rad * np.cos(phi_o * 7)
+    a9x = rad * np.cos(phi_o * 8)
+    a10x = rad * np.cos(phi_o * 9)
+
+
+    a1y = rad * np.sin(phi_o * 0)
+    a2y = rad * np.sin(phi_o * 1)
+    a3y = rad * np.sin(phi_o * 2)
+    a4y = rad * np.sin(phi_o * 3)
+    a5y = rad * np.sin(phi_o * 4)
+    a6y = rad * np.sin(phi_o * 5)
+    a7y = rad * np.sin(phi_o * 6)
+    a8y = rad * np.sin(phi_o * 7)
+    a9y = rad * np.sin(phi_o * 8)
+    a10y = rad * np.sin(phi_o * 9)
+
+    g1 = '         '
+    g2 = '     '
+
+    geom =  'H' + g1 + str(a1x)  + g2 + str(a1y)  + g2 + str(0.00)  + '\n' + \
+            'H' + g1 + str(a2x)  + g2 + str(a2y)  + g2 + str(0.00)  + '\n' + \
+            'H' + g1 + str(a3x)  + g2 + str(a3y)  + g2 + str(0.00)  + '\n' + \
+            'H' + g1 + str(a4x)  + g2 + str(a4y)  + g2 + str(0.00)  + '\n' + \
+            'H' + g1 + str(a5x)  + g2 + str(a5y)  + g2 + str(0.00)  + '\n' + \
+            'H' + g1 + str(a6x)  + g2 + str(a6y)  + g2 + str(0.00)  + '\n' + \
+            'H' + g1 + str(a7x)  + g2 + str(a7y)  + g2 + str(0.00)  + '\n' + \
+            'H' + g1 + str(a8x)  + g2 + str(a8y)  + g2 + str(0.00)  + '\n' + \
+            'H' + g1 + str(a9x)  + g2 + str(a9y)  + g2 + str(0.00)  + '\n' + \
+            'H' + g1 + str(a10x) + g2 + str(a10y) + g2 + str(0.00)
+
+    return geom
+
+
+import pyscf
+import pyscf.mcscf
+from pyscf import gto
+
+import ffsim
+
+# Build an ethene molecule
+# Initialize N2 molecule
+mol = gto.Mole()
+mol.build(
+        verbose = 5,
+        atom = get_h10ring_geom(1.0),
+        basis = 'sto-6g',
+        spin = 0)
+
+n_elec=sum(mol.nelec)
+n_orb=mol.nao_nr()
+print('n_elec: ',n_elec)
+print('n_orb: ',n_orb)
+print('n_qubits: ',2*n_orb)
+
+# Get molecular data and molecular Hamiltonian (one- and two-body tensors)
+scf = pyscf.scf.RHF(mol).run()
+mol_data = ffsim.MolecularData.from_scf(scf)
+norb = mol_data.norb
+nelec = mol_data.nelec
+mol_hamiltonian = mol_data.hamiltonian
+
+# Compute FCI energy
+mol_data.run_fci()
+
+import numpy as np
+from pyscf import cc
+
+# Get CCSD t2 amplitudes for initializing the ansatz
+ccsd = cc.CCSD(scf).run()
+mycc=ccsd
+
+# Extract t1 and t2 amplitudes (spatial orbitals)
+t1 = mycc.t1
+t2 = mycc.t2
+
+# Get the number of occupied and virtual orbitals (spatial orbitals)
+nocc = t1.shape[0]
+nvir = t1.shape[1]
+nmo = nocc + nvir  # Total number of spatial orbitals
+
+# Total number of spin orbitals
+nso = nmo * 2
+
+# Set the threshold
+threshold = 1e-2
+
+# Initialize t1 and t2 amplitudes in spin orbital form
+t1_so = np.zeros((nocc * 2, nvir * 2))
+t2_so = np.zeros((nocc * 2, nocc * 2, nvir * 2, nvir * 2))
+
+# Expand t1 amplitudes to spin orbital form
+for i in range(nocc):
+    for a in range(nvir):
+        # Occupied orbital indices (spin orbitals)
+        i_alpha = 2 * i
+        i_beta = 2 * i + 1
+        # Virtual orbital indices (spin orbitals), need to add total number of occupied orbitals * 2
+        a_alpha = 2 * a + nocc * 2
+        a_beta = 2 * a + 1 + nocc * 2
+        # Fill the amplitudes
+        t1_so[i_alpha, a_alpha - nocc * 2] = t1[i, a]       # α spin
+        t1_so[i_beta, a_beta - nocc * 2] = t1[i, a]         # β spin
+
+# Expand t2 amplitudes to spin orbital form
+for i in range(nocc):
+    for j in range(nocc):
+        for a in range(nvir):
+            for b in range(nvir):
+                # Occupied orbital indices (spin orbitals)
+                i_alpha = 2 * i
+                i_beta = 2 * i + 1
+                j_alpha = 2 * j
+                j_beta = 2 * j + 1
+                # Virtual orbital indices (spin orbitals), need to add total number of occupied orbitals * 2
+                a_alpha = 2 * a + nocc * 2
+                a_beta = 2 * a + 1 + nocc * 2
+                b_alpha = 2 * b + nocc * 2
+                b_beta = 2 * b + 1 + nocc * 2
+                # Fill the amplitudes
+                # αα spin pair
+                t2_so[i_alpha, j_alpha, a_alpha - nocc * 2, b_alpha - nocc * 2] = t2[i, j, a, b]
+                # ββ spin pair
+                t2_so[i_beta, j_beta, a_beta - nocc * 2, b_beta - nocc * 2] = t2[i, j, a, b]
+
+# Define spin orbital label function
+def spin_label(idx):
+    spin = 'alpha ' if idx % 2 == 0 else 'beta '
+    orb = idx // 2
+    return f"{spin}{orb}"
+
+# Output significant t1 amplitudes (single excitations with amplitude > threshold)
+print("\nSignificant t1 amplitudes (single excitations with amplitude > threshold):")
+t1_indices = np.argwhere(np.abs(t1_so) > threshold)
+for idx in t1_indices:
+    i = idx[0]  # Occupied orbital index (spin orbital)
+    a = idx[1] + nocc * 2  # Virtual orbital index (spin orbital)
+    amp = t1_so[idx[0], idx[1]]
+    print(f"Excitation from  {spin_label(i)} to {spin_label(a)}: {amp}")
+
+# Filter and sort t2 amplitudes
+t2_list = []
+for i in range(nocc * 2):
+    for j in range(nocc * 2):
+        for a in range(nvir * 2):
+            for b in range(nvir * 2):
+                amp = t2_so[i, j, a, b]
+                if abs(amp) > threshold:
+                    # Restore global indices for virtual orbitals
+                    a_global = a + nocc * 2
+                    b_global = b + nocc * 2
+                    t2_list.append(((i, j, a_global, b_global), amp))
+
+# Sort t2 amplitudes by the absolute value of amplitudes in descending order
+t2_list_sorted = sorted(t2_list, key=lambda x: abs(x[1]), reverse=True)
+
+# Output the sorted t2 amplitudes (double excitations)
+print("\nSignificant t2 amplitudes (double excitations), sorted by amplitude magnitude:")
+for (i, j, a, b), amp in t2_list_sorted:
+    print(f"Excitation from {spin_label(i)}, {spin_label(j)} to {spin_label(a)}, {spin_label(b)}: {amp}")
+
+#INFO: ******************** input file end ********************
+
+
+System: uname_result(system='Linux', node='mgt', release='4.19.113-15.nfs4.x86_64', version='#1 SMP Fri Oct 29 09:35:29 CST 2021', machine='x86_64', processor='x86_64')  Threads 64
+Python 3.8.8 (default, Apr 13 2021, 19:58:26) 
+[GCC 7.3.0]
+numpy 1.23.0  scipy 1.9.3
+Date: Wed Oct  2 10:59:58 2024
+PySCF version 2.5.0
+PySCF path  /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/pyscf
+
+[ENV] PYSCF_EXT_PATH /public/home/xzzeng/soft/dmrgscf:
+[CONFIG] conf_file None
+[INPUT] verbose = 5
+[INPUT] max_memory = 4000 
+[INPUT] num. atoms = 10
+[INPUT] num. electrons = 10
+[INPUT] charge = 0
+[INPUT] spin (= nelec alpha-beta = 2S) = 0
+[INPUT] symmetry False subgroup None
+[INPUT] Mole.unit = angstrom
+[INPUT] Symbol           X                Y                Z      unit          X                Y                Z       unit  Magmom
+[INPUT]  1 H      1.618033988750   0.000000000000   0.000000000000 AA    3.057641098975   0.000000000000   0.000000000000 Bohr   0.0
+[INPUT]  2 H      1.309016994375   0.951056516295   0.000000000000 AA    2.473683611770   1.797236344781   0.000000000000 Bohr   0.0
+[INPUT]  3 H      0.500000000000   1.538841768588   0.000000000000 AA    0.944863062283   2.907989491672   0.000000000000 Bohr   0.0
+[INPUT]  4 H     -0.500000000000   1.538841768588   0.000000000000 AA   -0.944863062283   2.907989491672   0.000000000000 Bohr   0.0
+[INPUT]  5 H     -1.309016994375   0.951056516295   0.000000000000 AA   -2.473683611770   1.797236344781   0.000000000000 Bohr   0.0
+[INPUT]  6 H     -1.618033988750   0.000000000000   0.000000000000 AA   -3.057641098975   0.000000000000   0.000000000000 Bohr   0.0
+[INPUT]  7 H     -1.309016994375  -0.951056516295   0.000000000000 AA   -2.473683611770  -1.797236344781   0.000000000000 Bohr   0.0
+[INPUT]  8 H     -0.500000000000  -1.538841768588   0.000000000000 AA   -0.944863062283  -2.907989491672   0.000000000000 Bohr   0.0
+[INPUT]  9 H      0.500000000000  -1.538841768588   0.000000000000 AA    0.944863062283  -2.907989491672   0.000000000000 Bohr   0.0
+[INPUT] 10 H      1.309016994375  -0.951056516295   0.000000000000 AA    2.473683611770  -1.797236344781   0.000000000000 Bohr   0.0
+[INPUT] ---------------- BASIS SET ---------------- 
+[INPUT] l, kappa, [nprim/nctr], expnt,             c_1 c_2 ...
+[INPUT] H
+[INPUT] 0    0    [6    /1   ]  35.52322122       0.00916359628
+                                6.513143725       0.04936149294
+                                1.822142904       0.1685383049
+                                0.625955266       0.3705627997
+                                0.243076747       0.4164915298
+                                0.100112428       0.1303340841
+
+nuclear repulsion = 12.6321231725525
+number of shells = 10
+number of NR pGTOs = 60
+number of NR cGTOs = 10
+basis = sto-6g
+ecp = {}
+CPU time:         2.71
+n_elec:  10
+n_orb:  10
+n_qubits:  20
+
+
+******** <class 'pyscf.scf.hf.RHF'> ********
+method = RHF
+initial guess = minao
+damping factor = 0
+level_shift factor = 0
+DIIS = <class 'pyscf.scf.diis.CDIIS'>
+diis_start_cycle = 1
+diis_space = 8
+diis_damp = 0
+SCF conv_tol = 1e-09
+SCF conv_tol_grad = None
+SCF max_cycles = 50
+direct_scf = True
+direct_scf_tol = 1e-13
+chkfile to save SCF result = /tmp/tmpt2777q67
+max_memory 4000 MB (current use 137 MB)
+Set gradient conv threshold to 3.16228e-05
+Initial guess from minao.
+E1 = -29.756934700425845  E_coul = 12.749605403138677
+init E= -4.37520612473465
+cond(S) = 10.716099101190643
+    CPU time for initialize scf     12.51 sec, wall time      0.25 sec
+  HOMO = -0.226438322771974  LUMO = 0.246039141488855
+  mo_energy =
+[-0.81772077 -0.60684291 -0.60684291 -0.22643832 -0.22643832  0.24603914
+  0.24603914  0.78588457  0.78588457  1.09175515]
+E1 = -30.57367711843141  E_coul = 12.666102093569238
+cycle= 1 E= -5.27545185230965  delta_E= -0.9  |g|= 3.25e-15  |ddm|= 2.29
+    CPU time for cycle= 1      1.65 sec, wall time      0.03 sec
+  HOMO = -0.328748178998658  LUMO = 0.294752946385175
+  mo_energy =
+[-0.72448826 -0.61937593 -0.61937593 -0.32874818 -0.32874818  0.29475295
+  0.29475295  0.85043078  0.85043078  1.15903425]
+E1 = -30.573677118431405  E_coul = 12.666102093569236
+cycle= 2 E= -5.27545185230965  delta_E=    0  |g|= 1.94e-15  |ddm|= 6.63e-15
+    CPU time for cycle= 2      2.23 sec, wall time      0.03 sec
+  HOMO = -0.328748178998657  LUMO = 0.294752946385176
+  mo_energy =
+[-0.72448826 -0.61937593 -0.61937593 -0.32874818 -0.32874818  0.29475295
+  0.29475295  0.85043078  0.85043078  1.15903425]
+E1 = -30.5736771184314  E_coul = 12.66610209356924
+Extra cycle  E= -5.27545185230964  delta_E= 7.11e-15  |g|= 4.24e-15  |ddm|= 5.24e-15
+    CPU time for scf_cycle     18.51 sec, wall time      0.35 sec
+    CPU time for SCF     18.51 sec, wall time      0.35 sec
+converged SCF energy = -5.27545185230964
+CASCI E = -5.42295843352886  E(CI) = -18.0550816060814  S^2 = 0.0000000
+
+******** <class 'pyscf.cc.ccsd.CCSD'> ********
+CC2 = 0
+CCSD nocc = 5, nmo = 10
+max_cycle = 50
+direct = 0
+conv_tol = 1e-07
+conv_tol_normt = 1e-05
+diis_space = 6
+diis_start_cycle = 0
+diis_start_energy_diff = 1e+09
+max_memory 4000 MB (current use 535 MB)
+E1 = -30.5736771184314  E_coul = 12.666102093569238
+    CPU time for CCSD integral transformation     20.32 sec, wall time      0.34 sec
+Init t2, MP2 energy = -5.38269624631206  E_corr(MP2) -0.107244394002416
+    CPU time for init mp2      0.00 sec, wall time      0.00 sec
+Init E_corr(CCSD) = -0.107244394002416
+cycle = 1  E_corr(CCSD) = -0.127548075233093  dE = -0.0203036812  norm(t1,t2) = 0.051016
+    CPU time for CCSD iter     16.91 sec, wall time      0.28 sec
+cycle = 2  E_corr(CCSD) = -0.136038128461151  dE = -0.00849005323  norm(t1,t2) = 0.0279808
+    CPU time for CCSD iter     16.83 sec, wall time      0.28 sec
+cycle = 3  E_corr(CCSD) = -0.143766357460607  dE = -0.007728229  norm(t1,t2) = 0.0151241
+    CPU time for CCSD iter     16.96 sec, wall time      0.28 sec
+cycle = 4  E_corr(CCSD) = -0.14407513659687  dE = -0.000308779136  norm(t1,t2) = 0.00159502
+    CPU time for CCSD iter     17.12 sec, wall time      0.27 sec
+cycle = 5  E_corr(CCSD) = -0.143930213759205  dE = 0.000144922838  norm(t1,t2) = 0.000474286
+    CPU time for CCSD iter     10.33 sec, wall time      0.17 sec
+cycle = 6  E_corr(CCSD) = -0.143952476418884  dE = -2.22626597e-05  norm(t1,t2) = 0.00011125
+    CPU time for CCSD iter      0.51 sec, wall time      0.01 sec
+cycle = 7  E_corr(CCSD) = -0.143953708245779  dE = -1.2318269e-06  norm(t1,t2) = 1.69303e-05
+    CPU time for CCSD iter      1.48 sec, wall time      0.02 sec
+cycle = 8  E_corr(CCSD) = -0.143953146550954  dE = 5.61694825e-07  norm(t1,t2) = 2.04037e-06
+    CPU time for CCSD iter     14.37 sec, wall time      0.23 sec
+cycle = 9  E_corr(CCSD) = -0.143953049802406  dE = 9.67485483e-08  norm(t1,t2) = 3.94708e-07
+    CPU time for CCSD iter      0.92 sec, wall time      0.02 sec
+    CPU time for CCSD     95.44 sec, wall time      1.56 sec
+CCSD converged
+E(CCSD) = -5.419404902112047  E_corr = -0.1439530498024059
+
+Significant t1 amplitudes (single excitations with amplitude > threshold):
+
+Significant t2 amplitudes (double excitations), sorted by amplitude magnitude:
+Excitation from alpha 3, alpha 3 to alpha 5, alpha 5: -0.12351675335827128
+Excitation from beta 3, beta 3 to beta 5, beta 5: -0.12351675335827128
+Excitation from alpha 4, alpha 4 to alpha 6, alpha 6: -0.1235167533582711
+Excitation from beta 4, beta 4 to beta 6, beta 6: -0.1235167533582711
+Excitation from alpha 3, alpha 4 to alpha 6, alpha 5: 0.08213834524607205
+Excitation from beta 3, beta 4 to beta 6, beta 5: 0.08213834524607205
+Excitation from alpha 4, alpha 3 to alpha 5, alpha 6: 0.08213834524607205
+Excitation from beta 4, beta 3 to beta 5, beta 6: 0.08213834524607205
+Excitation from alpha 4, alpha 4 to alpha 5, alpha 5: -0.04599197074809413
+Excitation from beta 4, beta 4 to beta 5, beta 5: -0.04599197074809413
+Excitation from alpha 3, alpha 3 to alpha 6, alpha 6: -0.04599197074809354
+Excitation from beta 3, beta 3 to beta 6, beta 6: -0.04599197074809354
+Excitation from alpha 1, alpha 3 to alpha 5, alpha 8: 0.044783387070119945
+Excitation from beta 1, beta 3 to beta 5, beta 8: 0.044783387070119945
+Excitation from alpha 3, alpha 1 to alpha 8, alpha 5: 0.044783387070119945
+Excitation from beta 3, beta 1 to beta 8, beta 5: 0.044783387070119945
+Excitation from alpha 1, alpha 4 to alpha 6, alpha 8: -0.04478338707011994
+Excitation from beta 1, beta 4 to beta 6, beta 8: -0.04478338707011994
+Excitation from alpha 4, alpha 1 to alpha 8, alpha 6: -0.04478338707011994
+Excitation from beta 4, beta 1 to beta 8, beta 6: -0.04478338707011994
+Excitation from alpha 2, alpha 3 to alpha 5, alpha 7: 0.04478338707011992
+Excitation from beta 2, beta 3 to beta 5, beta 7: 0.04478338707011992
+Excitation from alpha 3, alpha 2 to alpha 7, alpha 5: 0.04478338707011992
+Excitation from beta 3, beta 2 to beta 7, beta 5: 0.04478338707011992
+Excitation from alpha 2, alpha 4 to alpha 6, alpha 7: -0.044783387070119855
+Excitation from beta 2, beta 4 to beta 6, beta 7: -0.044783387070119855
+Excitation from alpha 4, alpha 2 to alpha 7, alpha 6: -0.044783387070119855
+Excitation from beta 4, beta 2 to beta 7, beta 6: -0.044783387070119855
+Excitation from alpha 0, alpha 3 to alpha 5, alpha 9: 0.033725551062941596
+Excitation from beta 0, beta 3 to beta 5, beta 9: 0.033725551062941596
+Excitation from alpha 3, alpha 0 to alpha 9, alpha 5: 0.033725551062941596
+Excitation from beta 3, beta 0 to beta 9, beta 5: 0.033725551062941596
+Excitation from alpha 0, alpha 4 to alpha 6, alpha 9: -0.033725551062941554
+Excitation from beta 0, beta 4 to beta 6, beta 9: -0.033725551062941554
+Excitation from alpha 4, alpha 0 to alpha 9, alpha 6: -0.033725551062941554
+Excitation from beta 4, beta 0 to beta 9, beta 6: -0.033725551062941554
+Excitation from alpha 1, alpha 1 to alpha 8, alpha 8: -0.030549879949813095
+Excitation from beta 1, beta 1 to beta 8, beta 8: -0.030549879949813095
+Excitation from alpha 2, alpha 2 to alpha 7, alpha 7: -0.030549879949813057
+Excitation from beta 2, beta 2 to beta 7, beta 7: -0.030549879949813057
+Excitation from alpha 2, alpha 2 to alpha 5, alpha 5: -0.03014588084246917
+Excitation from beta 2, beta 2 to beta 5, beta 5: -0.03014588084246917
+Excitation from alpha 1, alpha 1 to alpha 5, alpha 5: -0.030145880842469153
+Excitation from beta 1, beta 1 to beta 5, beta 5: -0.030145880842469153
+Excitation from alpha 1, alpha 1 to alpha 6, alpha 6: -0.030145880842469126
+Excitation from beta 1, beta 1 to beta 6, beta 6: -0.030145880842469126
+Excitation from alpha 2, alpha 2 to alpha 6, alpha 6: -0.030145880842469025
+Excitation from beta 2, beta 2 to beta 6, beta 6: -0.030145880842469025
+Excitation from alpha 1, alpha 3 to alpha 8, alpha 5: 0.02573593277900396
+Excitation from alpha 1, alpha 4 to alpha 8, alpha 6: -0.02573593277900396
+Excitation from beta 1, beta 3 to beta 8, beta 5: 0.02573593277900396
+Excitation from beta 1, beta 4 to beta 8, beta 6: -0.02573593277900396
+Excitation from alpha 3, alpha 1 to alpha 5, alpha 8: 0.02573593277900396
+Excitation from beta 3, beta 1 to beta 5, beta 8: 0.02573593277900396
+Excitation from alpha 4, alpha 1 to alpha 6, alpha 8: -0.02573593277900396
+Excitation from beta 4, beta 1 to beta 6, beta 8: -0.02573593277900396
+Excitation from alpha 2, alpha 3 to alpha 7, alpha 5: 0.025735932779003944
+Excitation from beta 2, beta 3 to beta 7, beta 5: 0.025735932779003944
+Excitation from alpha 3, alpha 2 to alpha 5, alpha 7: 0.025735932779003944
+Excitation from beta 3, beta 2 to beta 5, beta 7: 0.025735932779003944
+Excitation from alpha 2, alpha 4 to alpha 7, alpha 6: -0.025735932779003882
+Excitation from beta 2, beta 4 to beta 7, beta 6: -0.025735932779003882
+Excitation from alpha 4, alpha 2 to alpha 6, alpha 7: -0.025735932779003882
+Excitation from beta 4, beta 2 to beta 6, beta 7: -0.025735932779003882
+Excitation from alpha 4, alpha 4 to alpha 8, alpha 8: -0.021737631149287468
+Excitation from beta 4, beta 4 to beta 8, beta 8: -0.021737631149287468
+Excitation from alpha 3, alpha 3 to alpha 7, alpha 7: -0.021737631149287378
+Excitation from beta 3, beta 3 to beta 7, beta 7: -0.021737631149287378
+Excitation from alpha 3, alpha 3 to alpha 8, alpha 8: -0.021737631149287374
+Excitation from beta 3, beta 3 to beta 8, beta 8: -0.021737631149287374
+Excitation from alpha 4, alpha 4 to alpha 7, alpha 7: -0.021737631149287357
+Excitation from beta 4, beta 4 to beta 7, beta 7: -0.021737631149287357
+Excitation from alpha 0, alpha 0 to alpha 5, alpha 5: -0.021721801269881418
+Excitation from beta 0, beta 0 to beta 5, beta 5: -0.021721801269881418
+Excitation from alpha 0, alpha 0 to alpha 6, alpha 6: -0.021721801269881373
+Excitation from beta 0, beta 0 to beta 6, beta 6: -0.021721801269881373
+Excitation from alpha 0, alpha 3 to alpha 9, alpha 5: 0.020577145351710624
+Excitation from beta 0, beta 3 to beta 9, beta 5: 0.020577145351710624
+Excitation from alpha 3, alpha 0 to alpha 5, alpha 9: 0.020577145351710624
+Excitation from beta 3, beta 0 to beta 5, beta 9: 0.020577145351710624
+Excitation from alpha 0, alpha 4 to alpha 9, alpha 6: -0.020577145351710596
+Excitation from beta 0, beta 4 to beta 9, beta 6: -0.020577145351710596
+Excitation from alpha 4, alpha 0 to alpha 6, alpha 9: -0.020577145351710596
+Excitation from beta 4, beta 0 to beta 6, beta 9: -0.020577145351710596
+Excitation from alpha 0, alpha 1 to alpha 8, alpha 9: -0.017144132494014506
+Excitation from beta 0, beta 1 to beta 8, beta 9: -0.017144132494014506
+Excitation from alpha 1, alpha 0 to alpha 9, alpha 8: -0.017144132494014506
+Excitation from beta 1, beta 0 to beta 9, beta 8: -0.017144132494014506
+Excitation from alpha 0, alpha 2 to alpha 7, alpha 9: -0.01714413249401448
+Excitation from beta 0, beta 2 to beta 7, beta 9: -0.01714413249401448
+Excitation from alpha 2, alpha 0 to alpha 9, alpha 7: -0.01714413249401448
+Excitation from beta 2, beta 0 to beta 9, beta 7: -0.01714413249401448
+Excitation from alpha 1, alpha 2 to alpha 7, alpha 8: -0.014987912164205527
+Excitation from beta 1, beta 2 to beta 7, beta 8: -0.014987912164205527
+Excitation from alpha 2, alpha 1 to alpha 8, alpha 7: -0.014987912164205527
+Excitation from beta 2, beta 1 to beta 8, beta 7: -0.014987912164205527
+Excitation from alpha 0, alpha 1 to alpha 6, alpha 7: 0.014930210396051951
+Excitation from beta 0, beta 1 to beta 6, beta 7: 0.014930210396051951
+Excitation from alpha 1, alpha 0 to alpha 7, alpha 6: 0.014930210396051951
+Excitation from beta 1, beta 0 to beta 7, beta 6: 0.014930210396051951
+Excitation from alpha 0, alpha 2 to alpha 5, alpha 7: -0.014930210396051947
+Excitation from beta 0, beta 2 to beta 5, beta 7: -0.014930210396051947
+Excitation from alpha 2, alpha 0 to alpha 7, alpha 5: -0.014930210396051947
+Excitation from beta 2, beta 0 to beta 7, beta 5: -0.014930210396051947
+Excitation from alpha 0, alpha 2 to alpha 6, alpha 8: 0.014930210396051932
+Excitation from beta 0, beta 2 to beta 6, beta 8: 0.014930210396051932
+Excitation from alpha 2, alpha 0 to alpha 8, alpha 6: 0.014930210396051932
+Excitation from beta 2, beta 0 to beta 8, beta 6: 0.014930210396051932
+Excitation from alpha 0, alpha 1 to alpha 5, alpha 8: 0.01493021039605193
+Excitation from beta 0, beta 1 to beta 5, beta 8: 0.01493021039605193
+Excitation from alpha 1, alpha 0 to alpha 8, alpha 5: 0.01493021039605193
+Excitation from beta 1, beta 0 to beta 8, beta 5: 0.01493021039605193
+Excitation from alpha 0, alpha 0 to alpha 8, alpha 8: -0.01460477010646127
+Excitation from beta 0, beta 0 to beta 8, beta 8: -0.01460477010646127
+Excitation from alpha 0, alpha 0 to alpha 7, alpha 7: -0.014604770106461268
+Excitation from beta 0, beta 0 to beta 7, beta 7: -0.014604770106461268
+Excitation from alpha 0, alpha 0 to alpha 9, alpha 9: -0.014262725995562187
+Excitation from beta 0, beta 0 to beta 9, beta 9: -0.014262725995562187
+Excitation from alpha 0, alpha 1 to alpha 9, alpha 8: -0.014019989288569235
+Excitation from beta 0, beta 1 to beta 9, beta 8: -0.014019989288569235
+Excitation from alpha 1, alpha 0 to alpha 8, alpha 9: -0.014019989288569235
+Excitation from beta 1, beta 0 to beta 8, beta 9: -0.014019989288569235
+Excitation from alpha 0, alpha 2 to alpha 9, alpha 7: -0.0140199892885692
+Excitation from beta 0, beta 2 to beta 9, beta 7: -0.0140199892885692
+Excitation from alpha 2, alpha 0 to alpha 7, alpha 9: -0.0140199892885692
+Excitation from beta 2, beta 0 to beta 7, beta 9: -0.0140199892885692
+Excitation from alpha 3, alpha 3 to alpha 9, alpha 9: -0.0136498526223863
+Excitation from beta 3, beta 3 to beta 9, beta 9: -0.0136498526223863
+Excitation from alpha 4, alpha 4 to alpha 9, alpha 9: -0.013649852622386272
+Excitation from beta 4, beta 4 to beta 9, beta 9: -0.013649852622386272
+Excitation from alpha 1, alpha 1 to alpha 5, alpha 9: 0.012659447565836377
+Excitation from alpha 1, alpha 1 to alpha 9, alpha 5: 0.012659447565836377
+Excitation from beta 1, beta 1 to beta 5, beta 9: 0.012659447565836377
+Excitation from beta 1, beta 1 to beta 9, beta 5: 0.012659447565836377
+Excitation from alpha 2, alpha 2 to alpha 5, alpha 9: -0.012659447565836358
+Excitation from alpha 2, alpha 2 to alpha 9, alpha 5: -0.012659447565836358
+Excitation from beta 2, beta 2 to beta 5, beta 9: -0.012659447565836358
+Excitation from beta 2, beta 2 to beta 9, beta 5: -0.012659447565836358
+Excitation from alpha 1, alpha 2 to alpha 9, alpha 6: 0.012659447565836349
+Excitation from beta 1, beta 2 to beta 9, beta 6: 0.012659447565836349
+Excitation from alpha 2, alpha 1 to alpha 6, alpha 9: 0.012659447565836349
+Excitation from beta 2, beta 1 to beta 6, beta 9: 0.012659447565836349
+Excitation from alpha 1, alpha 2 to alpha 6, alpha 9: 0.012659447565836342
+Excitation from beta 1, beta 2 to beta 6, beta 9: 0.012659447565836342
+Excitation from alpha 2, alpha 1 to alpha 9, alpha 6: 0.012659447565836342
+Excitation from beta 2, beta 1 to beta 9, beta 6: 0.012659447565836342
+Excitation from alpha 1, alpha 1 to alpha 9, alpha 9: -0.012226352330949514
+Excitation from beta 1, beta 1 to beta 9, beta 9: -0.012226352330949514
+Excitation from alpha 2, alpha 2 to alpha 9, alpha 9: -0.012226352330949484
+Excitation from beta 2, beta 2 to beta 9, beta 9: -0.012226352330949484
+Excitation from alpha 4, alpha 4 to alpha 5, alpha 6: -0.012128171948944347
+Excitation from alpha 4, alpha 4 to alpha 6, alpha 5: -0.012128171948944347
+Excitation from beta 4, beta 4 to beta 5, beta 6: -0.012128171948944347
+Excitation from beta 4, beta 4 to beta 6, beta 5: -0.012128171948944347
+Excitation from alpha 3, alpha 4 to alpha 5, alpha 5: 0.01212817194894425
+Excitation from beta 3, beta 4 to beta 5, beta 5: 0.01212817194894425
+Excitation from alpha 4, alpha 3 to alpha 5, alpha 5: 0.01212817194894425
+Excitation from beta 4, beta 3 to beta 5, beta 5: 0.01212817194894425
+Excitation from alpha 3, alpha 3 to alpha 5, alpha 6: 0.012128171948943976
+Excitation from alpha 3, alpha 3 to alpha 6, alpha 5: 0.012128171948943976
+Excitation from beta 3, beta 3 to beta 5, beta 6: 0.012128171948943976
+Excitation from beta 3, beta 3 to beta 6, beta 5: 0.012128171948943976
+Excitation from alpha 3, alpha 4 to alpha 6, alpha 6: -0.012128171948943903
+Excitation from beta 3, beta 4 to beta 6, beta 6: -0.012128171948943903
+Excitation from alpha 4, alpha 3 to alpha 6, alpha 6: -0.012128171948943903
+Excitation from beta 4, beta 3 to beta 6, beta 6: -0.012128171948943903
+Excitation from alpha 2, alpha 4 to alpha 5, alpha 8: -0.011532197878082694
+Excitation from beta 2, beta 4 to beta 5, beta 8: -0.011532197878082694
+Excitation from alpha 4, alpha 2 to alpha 8, alpha 5: -0.011532197878082694
+Excitation from beta 4, beta 2 to beta 8, beta 5: -0.011532197878082694
+Excitation from alpha 1, alpha 3 to alpha 6, alpha 7: 0.01153219787808267
+Excitation from beta 1, beta 3 to beta 6, beta 7: 0.01153219787808267
+Excitation from alpha 3, alpha 1 to alpha 7, alpha 6: 0.01153219787808267
+Excitation from beta 3, beta 1 to beta 7, beta 6: 0.01153219787808267
+Excitation from alpha 1, alpha 4 to alpha 5, alpha 7: 0.011532197878082667
+Excitation from beta 1, beta 4 to beta 5, beta 7: 0.011532197878082667
+Excitation from alpha 4, alpha 1 to alpha 7, alpha 5: 0.011532197878082667
+Excitation from beta 4, beta 1 to beta 7, beta 5: 0.011532197878082667
+Excitation from alpha 2, alpha 3 to alpha 6, alpha 8: -0.011532197878082635
+Excitation from beta 2, beta 3 to beta 6, beta 8: -0.011532197878082635
+Excitation from alpha 3, alpha 2 to alpha 8, alpha 6: -0.011532197878082635
+Excitation from beta 3, beta 2 to beta 8, beta 6: -0.011532197878082635
+Excitation from alpha 0, alpha 1 to alpha 7, alpha 6: 0.01115172506972657
+Excitation from beta 0, beta 1 to beta 7, beta 6: 0.01115172506972657
+Excitation from alpha 1, alpha 0 to alpha 6, alpha 7: 0.01115172506972657
+Excitation from beta 1, beta 0 to beta 6, beta 7: 0.01115172506972657
+Excitation from alpha 0, alpha 2 to alpha 7, alpha 5: -0.011151725069726559
+Excitation from beta 0, beta 2 to beta 7, beta 5: -0.011151725069726559
+Excitation from alpha 2, alpha 0 to alpha 5, alpha 7: -0.011151725069726559
+Excitation from beta 2, beta 0 to beta 5, beta 7: -0.011151725069726559
+Excitation from alpha 0, alpha 2 to alpha 8, alpha 6: 0.011151725069726552
+Excitation from beta 0, beta 2 to beta 8, beta 6: 0.011151725069726552
+Excitation from alpha 2, alpha 0 to alpha 6, alpha 8: 0.011151725069726552
+Excitation from beta 2, beta 0 to beta 6, beta 8: 0.011151725069726552
+Excitation from alpha 0, alpha 1 to alpha 8, alpha 5: 0.011151725069726547
+Excitation from beta 0, beta 1 to beta 8, beta 5: 0.011151725069726547
+Excitation from alpha 1, alpha 0 to alpha 5, alpha 8: 0.011151725069726547
+Excitation from beta 1, beta 0 to beta 5, beta 8: 0.011151725069726547
+Excitation from alpha 2, alpha 4 to alpha 8, alpha 9: 0.010455539865126965
+Excitation from beta 2, beta 4 to beta 8, beta 9: 0.010455539865126965
+Excitation from alpha 4, alpha 2 to alpha 9, alpha 8: 0.010455539865126965
+Excitation from beta 4, beta 2 to beta 9, beta 8: 0.010455539865126965
+Excitation from alpha 1, alpha 3 to alpha 8, alpha 9: -0.010455539865126947
+Excitation from beta 1, beta 3 to beta 8, beta 9: -0.010455539865126947
+Excitation from alpha 3, alpha 1 to alpha 9, alpha 8: -0.010455539865126947
+Excitation from beta 3, beta 1 to beta 9, beta 8: -0.010455539865126947
+Excitation from alpha 1, alpha 4 to alpha 7, alpha 9: 0.010455539865126923
+Excitation from beta 1, beta 4 to beta 7, beta 9: 0.010455539865126923
+Excitation from alpha 4, alpha 1 to alpha 9, alpha 7: 0.010455539865126923
+Excitation from beta 4, beta 1 to beta 9, beta 7: 0.010455539865126923
+Excitation from alpha 2, alpha 3 to alpha 7, alpha 9: 0.01045553986512691
+Excitation from beta 2, beta 3 to beta 7, beta 9: 0.01045553986512691
+Excitation from alpha 3, alpha 2 to alpha 9, alpha 7: 0.01045553986512691
+Excitation from beta 3, beta 2 to beta 9, beta 7: 0.01045553986512691
+Excitation from alpha 2, alpha 2 to alpha 8, alpha 8: -0.01032378170581209
+Excitation from beta 2, beta 2 to beta 8, beta 8: -0.01032378170581209
+Excitation from alpha 1, alpha 1 to alpha 7, alpha 7: -0.010323781705812054
+Excitation from beta 1, beta 1 to beta 7, beta 7: -0.010323781705812054

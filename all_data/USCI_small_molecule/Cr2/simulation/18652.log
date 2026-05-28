@@ -1,0 +1,535 @@
+/public/home/xzzeng/.local/lib/python3.8/site-packages/q2chem/qchem/transformation/_jordan_wigner.py:14: UserWarning: JIT: Compiling high-performance Jordan-Wigner kernel. Set environmental variable Q2CHEM_JIT to "NO" to disable JIT and use the Python-based Jordan-Wigner transformation.
+  warnings.warn("JIT: Compiling high-performance Jordan-Wigner kernel. \
+Using /public/home/xzzeng/.cache/torch_extensions/py38_cu121 as PyTorch extensions root...
+Creating extension directory /public/home/xzzeng/.cache/torch_extensions/py38_cu121/_jordan_wigner_cpp_cpu...
+Emitting ninja build file /public/home/xzzeng/.cache/torch_extensions/py38_cu121/_jordan_wigner_cpp_cpu/build.ninja...
+Building extension module _jordan_wigner_cpp_cpu...
+Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+[1/2] c++ -MMD -MF _jordan_wigner_cpu.o.d -DTORCH_EXTENSION_NAME=_jordan_wigner_cpp_cpu -DTORCH_API_INCLUDE_EXTENSION_H -DPYBIND11_COMPILER_TYPE=\"_gcc\" -DPYBIND11_STDLIB=\"_libstdcpp\" -DPYBIND11_BUILD_ABI=\"_cxxabi1011\" -isystem /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include -isystem /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/torch/csrc/api/include -isystem /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/TH -isystem /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/THC -isystem /public/home/xzzeng/anaconda3/envs/quantum/include/python3.8 -D_GLIBCXX_USE_CXX11_ABI=0 -fPIC -std=c++17 -O3 -std=c++17 -c /public/home/xzzeng/.local/lib/python3.8/site-packages/q2chem/qchem/transformation/_jordan_wigner_cpu.cpp -o _jordan_wigner_cpu.o 
+FAILED: _jordan_wigner_cpu.o 
+c++ -MMD -MF _jordan_wigner_cpu.o.d -DTORCH_EXTENSION_NAME=_jordan_wigner_cpp_cpu -DTORCH_API_INCLUDE_EXTENSION_H -DPYBIND11_COMPILER_TYPE=\"_gcc\" -DPYBIND11_STDLIB=\"_libstdcpp\" -DPYBIND11_BUILD_ABI=\"_cxxabi1011\" -isystem /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include -isystem /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/torch/csrc/api/include -isystem /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/TH -isystem /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/THC -isystem /public/home/xzzeng/anaconda3/envs/quantum/include/python3.8 -D_GLIBCXX_USE_CXX11_ABI=0 -fPIC -std=c++17 -O3 -std=c++17 -c /public/home/xzzeng/.local/lib/python3.8/site-packages/q2chem/qchem/transformation/_jordan_wigner_cpu.cpp -o _jordan_wigner_cpu.o 
+In file included from /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/ATen/core/TensorBase.h:14,
+                 from /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/ATen/core/TensorBody.h:38,
+                 from /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/ATen/core/Tensor.h:3,
+                 from /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/ATen/Tensor.h:3,
+                 from /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/torch/csrc/autograd/function_hook.h:3,
+                 from /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/torch/csrc/autograd/cpp_hook.h:2,
+                 from /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/torch/csrc/autograd/variable.h:6,
+                 from /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/torch/csrc/autograd/autograd.h:3,
+                 from /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/torch/csrc/api/include/torch/autograd.h:3,
+                 from /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/torch/csrc/api/include/torch/all.h:7,
+                 from /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/torch/extension.h:5,
+                 from /public/home/xzzeng/.local/lib/python3.8/site-packages/q2chem/qchem/transformation/_jordan_wigner_cpu.cpp:10:
+/public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/c10/util/C++17.h:13:2: error: #error "You're trying to build PyTorch with a too old version of GCC. We need GCC 9 or later."
+ #error \
+  ^~~~~
+ninja: build stopped: subcommand failed.
+/public/home/xzzeng/.local/lib/python3.8/site-packages/q2chem/qchem/transformation/_jordan_wigner.py:26: UserWarning: Jordan-Wigner: JIT for CPU failed with error: Error building extension '_jordan_wigner_cpp_cpu'. Using python version instead.
+  warnings.warn("Jordan-Wigner: JIT for CPU failed with error: {}. \
+/public/home/xzzeng/.local/lib/python3.8/site-packages/q2chem/qcirc/qpu/simulator/_state_vector_simulator.py:55: UserWarning: JIT: Compiling high-performance state vector simulator. Set environmental variable Q2CHEM_JIT to "NO" to disable JIT and use the Python-based state vector simulator.
+  warnings.warn("JIT: Compiling high-performance state vector simulator. \
+Using /public/home/xzzeng/.cache/torch_extensions/py38_cu121 as PyTorch extensions root...
+Creating extension directory /public/home/xzzeng/.cache/torch_extensions/py38_cu121/_apply_quantum_gate_cpp_cpu...
+Emitting ninja build file /public/home/xzzeng/.cache/torch_extensions/py38_cu121/_apply_quantum_gate_cpp_cpu/build.ninja...
+Building extension module _apply_quantum_gate_cpp_cpu...
+Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+[1/2] c++ -MMD -MF _state_vector_simulator_cpu.o.d -DTORCH_EXTENSION_NAME=_apply_quantum_gate_cpp_cpu -DTORCH_API_INCLUDE_EXTENSION_H -DPYBIND11_COMPILER_TYPE=\"_gcc\" -DPYBIND11_STDLIB=\"_libstdcpp\" -DPYBIND11_BUILD_ABI=\"_cxxabi1011\" -isystem /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include -isystem /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/torch/csrc/api/include -isystem /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/TH -isystem /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/THC -isystem /public/home/xzzeng/anaconda3/envs/quantum/include/python3.8 -D_GLIBCXX_USE_CXX11_ABI=0 -fPIC -std=c++17 -std=c++17 -O3 -fopenmp -c /public/home/xzzeng/.local/lib/python3.8/site-packages/q2chem/qcirc/qpu/simulator/_state_vector_simulator_cpu.cpp -o _state_vector_simulator_cpu.o 
+FAILED: _state_vector_simulator_cpu.o 
+c++ -MMD -MF _state_vector_simulator_cpu.o.d -DTORCH_EXTENSION_NAME=_apply_quantum_gate_cpp_cpu -DTORCH_API_INCLUDE_EXTENSION_H -DPYBIND11_COMPILER_TYPE=\"_gcc\" -DPYBIND11_STDLIB=\"_libstdcpp\" -DPYBIND11_BUILD_ABI=\"_cxxabi1011\" -isystem /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include -isystem /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/torch/csrc/api/include -isystem /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/TH -isystem /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/THC -isystem /public/home/xzzeng/anaconda3/envs/quantum/include/python3.8 -D_GLIBCXX_USE_CXX11_ABI=0 -fPIC -std=c++17 -std=c++17 -O3 -fopenmp -c /public/home/xzzeng/.local/lib/python3.8/site-packages/q2chem/qcirc/qpu/simulator/_state_vector_simulator_cpu.cpp -o _state_vector_simulator_cpu.o 
+In file included from /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/ATen/core/TensorBase.h:14,
+                 from /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/ATen/core/TensorBody.h:38,
+                 from /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/ATen/core/Tensor.h:3,
+                 from /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/ATen/Tensor.h:3,
+                 from /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/torch/csrc/autograd/function_hook.h:3,
+                 from /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/torch/csrc/autograd/cpp_hook.h:2,
+                 from /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/torch/csrc/autograd/variable.h:6,
+                 from /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/torch/csrc/autograd/autograd.h:3,
+                 from /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/torch/csrc/api/include/torch/autograd.h:3,
+                 from /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/torch/csrc/api/include/torch/all.h:7,
+                 from /public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/torch/extension.h:5,
+                 from /public/home/xzzeng/.local/lib/python3.8/site-packages/q2chem/qcirc/qpu/simulator/_state_vector_simulator_cpu.cpp:2:
+/public/home/xzzeng/anaconda3/envs/quantum/lib/python3.8/site-packages/torch/include/c10/util/C++17.h:13:2: error: #error "You're trying to build PyTorch with a too old version of GCC. We need GCC 9 or later."
+ #error \
+  ^~~~~
+ninja: build stopped: subcommand failed.
+/public/home/xzzeng/.local/lib/python3.8/site-packages/q2chem/qcirc/qpu/simulator/_state_vector_simulator.py:80: UserWarning: StateVector: JIT for CPU failed with error: Error building extension '_apply_quantum_gate_cpp_cpu'. Using python version instead.
+  warnings.warn("StateVector: JIT for CPU failed with error: {}. \
+Using /public/home/xzzeng/.cache/torch_extensions/py38_cu121 as PyTorch extensions root...
+Creating extension directory /public/home/xzzeng/.cache/torch_extensions/py38_cu121/_apply_quantum_gate_cpp_gpu...
+Detected CUDA files, patching ldflags
+/public/home/xzzeng/.local/lib/python3.8/site-packages/q2chem/qcirc/qpu/simulator/_state_vector_simulator.py:102: UserWarning: StateVector: JIT for GPU failed with error: CUDA_HOME environment variable is not set. Please set it to your CUDA install root.. Using python version instead.
+  warnings.warn("StateVector: JIT for GPU failed with error: {}. \
+filtered_states:  [('111111111100110000000000', -0.524422406, 0), ('111111001100111100000000', 0.428600601, 1), ('111111111100010000000010', -0.246465761, 2), ('111111111100100000000001', 0.246465761, 3), ('111111001100011100000010', 0.204046405, 4), ('111111001100101100000001', -0.204046405, 5), ('111111011100110000001000', 0.189072391, 6), ('111111101100110000000100', -0.189072391, 7), ('111101111100110000100000', -0.180407561, 8), ('111110111100110000010000', 0.180407561, 9), ('111101001100111100100000', 0.143753416, 10), ('111110001100111100010000', -0.143753416, 11), ('111111111100000000000011', -0.114660169, 12)]
+excitations:  [[4, 6, 7, 14, 15], [2, 12, 22], [2, 13, 23], [6, 6, 7, 12, 14, 15, 22], [6, 6, 7, 13, 14, 15, 23], [6, 6, 7, 12, 14, 15, 22], [6, 6, 7, 13, 14, 15, 23], [2, 6, 20], [2, 7, 21], [2, 4, 18], [2, 5, 19], [2, 12, 22], [2, 13, 23], [4, 7, 14, 15, 20], [4, 6, 14, 15, 21], [6, 4, 6, 7, 14, 15, 18], [6, 5, 6, 7, 14, 15, 19], [6, 4, 6, 7, 14, 15, 18], [6, 5, 6, 7, 14, 15, 19], [2, 4, 18], [2, 5, 19], [4, 12, 13, 22, 23], [4, 12, 13, 22, 23], [4, 6, 7, 14, 15], [8, 6, 7, 12, 13, 14, 15, 22, 23], [8, 6, 7, 12, 13, 14, 15, 22, 23], [4, 6, 7, 14, 15], [8, 6, 7, 12, 13, 14, 15, 22, 23], [4, 6, 12, 20, 22], [4, 7, 12, 21, 22], [4, 6, 13, 20, 23], [4, 7, 13, 21, 23], [4, 4, 12, 18, 22], [4, 5, 12, 19, 22], [4, 4, 13, 18, 23], [4, 5, 13, 19, 23], [4, 12, 13, 22, 23], [6, 7, 12, 14, 15, 20, 22], [6, 6, 12, 14, 15, 21, 22], [6, 7, 13, 14, 15, 20, 23], [6, 6, 13, 14, 15, 21, 23], [8, 4, 6, 7, 12, 14, 15, 18, 22], [8, 5, 6, 7, 12, 14, 15, 19, 22], [8, 4, 6, 7, 13, 14, 15, 18, 23], [8, 5, 6, 7, 13, 14, 15, 19, 23], [4, 6, 7, 20, 21], [8, 4, 6, 7, 12, 14, 15, 18, 22], [8, 5, 6, 7, 12, 14, 15, 19, 22], [8, 4, 6, 7, 13, 14, 15, 18, 23], [8, 5, 6, 7, 13, 14, 15, 19, 23], [4, 4, 6, 18, 20], [4, 5, 6, 19, 20], [4, 4, 7, 18, 21], [4, 5, 7, 19, 21], [4, 4, 5, 18, 19], [4, 4, 12, 18, 22], [4, 5, 12, 19, 22], [4, 4, 13, 18, 23], [4, 5, 13, 19, 23], [2, 13, 23], [2, 12, 22], [6, 4, 7, 14, 15, 18, 20], [6, 5, 7, 14, 15, 19, 20], [6, 4, 6, 14, 15, 18, 21], [6, 5, 6, 14, 15, 19, 21], [4, 6, 7, 14, 15], [8, 4, 5, 6, 7, 14, 15, 18, 19], [8, 4, 5, 6, 7, 14, 15, 18, 19], [4, 6, 7, 14, 15], [6, 6, 7, 13, 14, 15, 23], [6, 6, 7, 12, 14, 15, 22], [6, 6, 12, 13, 20, 22, 23], [6, 7, 12, 13, 21, 22, 23], [6, 4, 12, 13, 18, 22, 23], [6, 5, 12, 13, 19, 22, 23], [4, 4, 5, 18, 19], [10, 4, 6, 7, 12, 13, 14, 15, 18, 22, 23], [10, 5, 6, 7, 12, 13, 14, 15, 19, 22, 23]]
+unique_position:  [4, 5, 6, 7, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23]
+remaining_positions:  [0, 1, 2, 3, 8, 9, 10, 11, 16, 17]
+Num_params:  140
+simulator options:
+{'initial_state': 'allzero', 'device': 'cpu', 'n_threads': 32}
+mps options:
+{'max_bond_dimension': 64, 'cut_threshold': 1e-06, 'algorithm': 'vidal'}
+Start optimization.
+Number of qubits: 24
+Number of parameters: 140
+Energy: -1177.454762494117
+Energy: -1177.3677431156907
+Energy: -1177.1888966579122
+Energy: -1177.413773368736
+Energy: -1177.454762494117
+Energy: -1177.454762494117
+Energy: -1177.454762494117
+Energy: -1177.454762494117
+Energy: -1177.454762494117
+Energy: -1177.454762494117
+Energy: -1177.454762494117
+Energy: -1177.454762494117
+Energy: -1177.1932234565804
+Energy: -1177.2290623209365
+Energy: -1177.2950699221312
+Energy: -1177.5772215053373
+Energy: -1177.3191480625119
+Energy: -1177.5367562568208
+Energy: -1177.5772215053398
+Energy: -1177.5772215053375
+Energy: -1177.5772215053382
+Energy: -1177.5772215053398
+Energy: -1177.5772215053375
+Energy: -1177.577899505331
+Energy: -1177.5778995053329
+Energy: -1177.5776576937105
+Energy: -1177.5778995053327
+Energy: -1177.5793063412332
+Energy: -1177.4219870504712
+Energy: -1177.7673184356877
+Energy: -1177.4742279548948
+Energy: -1177.4742279548943
+Energy: -1177.710001867696
+Energy: -1177.7673184356872
+Energy: -1177.7673184356865
+Energy: -1177.7673184356865
+Energy: -1177.767318435686
+Energy: -1177.7100018676936
+Energy: -1177.767318435686
+Energy: -1177.7673184356865
+Energy: -1177.2435714815801
+Energy: -1177.284576292364
+Energy: -1177.4759092255447
+Energy: -1177.5133640832805
+Energy: -1177.3498415015163
+Energy: -1177.721625618483
+Energy: -1177.5796422943042
+Energy: -1177.802264272034
+Energy: -1177.5392311191076
+Energy: -1177.721092222521
+Energy: -1177.8022642720348
+Energy: -1177.7120006789066
+Energy: -1177.8022642720364
+Energy: -1177.8678750607712
+Energy: -1177.8770643698927
+Energy: -1177.919967568614
+Energy: -1177.9193784595625
+Energy: -1177.9199675686139
+Energy: -1177.8681197458027
+Energy: -1177.9067640259354
+Energy: -1177.899801491039
+Energy: -1177.874750205035
+Energy: -1177.8705216949104
+Energy: -1177.919900282831
+Energy: -1177.9059455135982
+Energy: -1177.6019564912556
+Energy: -1177.9199675686145
+Energy: -1177.8681197458025
+Energy: -1177.906764025936
+Energy: -1177.8998014910394
+Energy: -1177.874750205034
+Energy: -1177.8705216949134
+Energy: -1177.9199002828311
+Energy: -1177.9059455135987
+Energy: -1177.592488586239
+Energy: -1177.8930632266813
+Energy: -1177.6288582645782
+Energy: -1177.9030887461688
+Energy: -1177.9191858818253
+Energy: -1177.5188417802508
+Energy: -1177.8895571890894
+Energy: -1177.8063326620456
+Energy: -1177.9661250600393
+Energy: -1177.9904303929925
+Energy: -1177.7565139462015
+Energy: -1177.90870167035
+Energy: -1178.0009392221186
+Energy: -1177.9964225557078
+Energy: -1177.882031421583
+Energy: -1177.9136217052542
+Energy: -1177.9991429963204
+Energy: -1177.9991915224327
+Energy: -1177.8900825526853
+Energy: -1177.9722191573055
+Energy: -1178.0009392221143
+Energy: -1177.9866555442459
+Energy: -1178.0009392221184
+Energy: -1177.9866555442468
+Energy: -1177.9722191573057
+Energy: -1177.9811965149863
+Energy: -1177.9383082121255
+Energy: -1178.0009392221148
+Energy: -1177.9042356771292
+Energy: -1177.8847666081597
+Energy: -1177.9997363843374
+Energy: -1177.901453361932
+Energy: -1177.9997363843374
+Energy: -1177.8695083534951
+Energy: -1177.9997363843372
+Energy: -1177.9941876952932
+Energy: -1177.9997363843377
+Energy: -1178.0035809298538
+Energy: -1178.0045181978173
+Energy: -1178.0045181978192
+Energy: -1178.0033270633437
+Energy: -1177.9892931005554
+Energy: -1178.0045181978173
+Energy: -1178.0033270633437
+Energy: -1178.0045181978192
+Energy: -1178.0045181978192
+Energy: -1178.0045181978192
+Energy: -1178.009201042976
+Energy: -1177.7834189630928
+Energy: -1177.8831699738123
+Energy: -1178.0147866098907
+Energy: -1178.0642540953545
+Energy: -1178.062563196473
+Energy: -1178.0597643134433
+Energy: -1178.0642540953559
+Energy: -1177.8613502649785
+Energy: -1177.9907880597586
+Energy: -1178.0948831180394
+Energy: -1178.0948414015638
+Energy: -1178.146439748674
+Energy: -1178.1180465830537
+Energy: -1178.1367595322097
+Energy: -1178.1469628002271
+Energy: -1178.0497719126054
+Energy: -1178.155639006598
+Energy: -1178.1540226092163
+Energy: -1178.153175893485
+Energy: -1177.748609110755
+Energy: -1178.1233501089591
+Energy: -1177.7309597425103
+Energy: -1178.1717195204703
+Energy: -1177.9308246288413
+Energy: -1178.1717153870495
+Energy: -1177.9699334637064
+Energy: -1178.1719721894162
+Energy: -1177.9741635135208
+Energy: -1178.1688602186439
+Energy: -1177.9966708056843
+Energy: -1178.1695523774736
+Energy: -1178.1169907644874
+Energy: -1178.171784256518
+Energy: -1178.1275975450317
+Energy: -1178.1685253540502
+Energy: -1178.0788165950712
+Energy: -1178.1022402941667
+Energy: -1177.926759415464
+Energy: -1178.1719721894149
+Energy: -1177.9962434450615
+Energy: -1178.1719721894124
+Energy: -1178.0209564408242
+Energy: -1178.1719721894133
+Energy: -1178.1477385563708
+Energy: -1178.1719829042913
+Energy: -1178.1135778180728
+Energy: -1178.1719829042947
+Energy: -1178.1888436325798
+Energy: -1178.1885880557004
+Energy: -1178.0996434839803
+Energy: -1178.0680008564232
+Energy: -1177.8199165935878
+Energy: -1178.188843670078
+Energy: -1177.5631949827393
+Energy: -1178.1051805589873
+Energy: -1177.8874546595057
+Energy: -1178.1704017463464
+Energy: -1177.8850426688953
+Energy: -1178.1658902469346
+Energy: -1178.1361197286944
+Energy: -1178.1888790916744
+Energy: -1177.9506128146463
+Energy: -1178.1889172483343
+Energy: -1178.0625043795133
+Energy: -1178.188908664355
+Energy: -1178.074188478309
+Energy: -1178.1889117241035
+Energy: -1178.1459317051797
+Energy: -1178.1889434487425
+Energy: -1178.1676879368904
+Energy: -1178.188907588428
+Energy: -1178.1561713838714
+Energy: -1178.1830626639896
+Energy: -1178.1226310723212
+Energy: -1178.1715486829733
+Energy: -1177.96791890543
+Energy: -1178.171898435713
+Energy: -1177.7839097470098
+Energy: -1178.17795558606
+Energy: -1177.930864022064
+Energy: -1178.2152434175243
+Energy: -1177.8904055748574
+Energy: -1178.207836474273
+Energy: -1178.1225929219634
+Energy: -1178.2197435153894
+Energy: -1178.1174569683114
+Energy: -1178.206279606443
+Energy: -1178.1311202821698
+Energy: -1178.2272179276683
+Energy: -1178.1938158763987
+Energy: -1178.2223895027555
+Energy: -1178.2016077865362
+Energy: -1178.2272270455053
+Energy: -1178.212367845799
+Energy: -1178.2229680464882
+Energy: -1178.209757631264
+Energy: -1178.2164715030237
+Energy: -1178.2029633213342
+Energy: -1178.2186491365317
+Energy: -1178.2050784409153
+Energy: -1178.230062190206
+Energy: -1178.2040801708754
+Energy: -1178.2047869237435
+Energy: -1178.023011366531
+Energy: -1178.2333026617441
+Energy: -1178.0749540363884
+Energy: -1178.2025969812191
+Energy: -1178.1221568895878
+Energy: -1178.1984148033846
+Energy: -1178.1035755373625
+Energy: -1178.2220198896055
+Energy: -1178.180039865354
+Energy: -1178.2346922666898
+Energy: -1178.1648491640426
+Energy: -1178.2330864997778
+Energy: -1178.2317507521195
+Energy: -1178.2346930065607
+Energy: -1178.2060975359643
+Energy: -1178.2322472272917
+Energy: -1178.230013892894
+Energy: -1178.2343789864258
+Energy: -1178.2224825673177
+Energy: -1178.2312364446439
+Energy: -1178.2228401174377
+Energy: -1178.2346930065564
+Energy: -1178.2348731663026
+Energy: -1178.2348503978997
+Energy: -1178.229447633693
+Energy: -1178.2352214557914
+Energy: -1178.229622147426
+Energy: -1178.2342282245752
+Energy: -1178.22967925366
+Energy: -1178.2364332302427
+Energy: -1178.202812893657
+Energy: -1178.2363025703667
+Energy: -1178.0145730575955
+Energy: -1178.236070740633
+Energy: -1178.1324084861826
+Energy: -1178.236545587735
+Energy: -1178.0426062887864
+Energy: -1178.236545587735
+Energy: -1178.1490160117014
+Energy: -1178.236545587735
+Energy: -1178.1824094049143
+Energy: -1178.236545587735
+Energy: -1178.1944406422767
+Energy: -1178.2318697552114
+Energy: -1178.1731709510195
+Energy: -1178.2347990020785
+Energy: -1178.2074143956108
+Energy: -1178.2337558848697
+Energy: -1178.2073411340793
+Energy: -1178.209862593869
+Energy: -1178.1833557210043
+Energy: -1178.2345741177471
+Energy: -1178.130305218254
+Energy: -1178.241992468805
+Energy: -1177.826920281508
+Energy: -1178.2439728497852
+Energy: -1177.8514705249645
+Energy: -1178.2440999978066
+Energy: -1177.9934564090665
+Energy: -1178.2429848417014
+Energy: -1178.031886088203
+Energy: -1178.1737013998913
+Energy: -1178.011123931096
+Energy: -1178.2436894982075
+Energy: -1177.93159077491
+Energy: -1178.25361574466
+Energy: -1178.063564713025
+Energy: -1178.2540900674655
+Energy: -1178.163213024843
+Energy: -1178.251861346076
+Energy: -1178.2031594375962
+Energy: -1178.1997083642373
+Energy: -1178.0489987258463
+Energy: -1178.254496054712
+Energy: -1178.0855518155845
+Energy: -1178.2555489775216
+Energy: -1177.9057310302483
+Energy: -1178.244491213267
+Energy: -1177.8974199317859
+Energy: -1178.2615911811904
+Energy: -1177.9790611467563
+Energy: -1178.2615649744782
+Energy: -1178.180847804281
+Energy: -1178.2625113790855
+Energy: -1177.9850832228983
+Energy: -1178.2625109405685
+Energy: -1178.0260728305814
+Energy: -1178.2625110939962
+Energy: -1178.1400928374883
+Energy: -1178.2625110186975
+Energy: -1178.121638550589
+Energy: -1178.2605180871399
+Energy: -1177.8330671263932
+Energy: -1178.2624994348755
+Energy: -1178.1365174211028
+Energy: -1178.2622679228334
+Energy: -1178.208545539922
+Energy: -1178.2645433779621
+Energy: -1177.8558598780428
+Energy: -1178.2088009945442
+Energy: -1178.0684636193478
+Energy: -1178.283448905023
+Energy: -1177.9065572238694
+Energy: -1178.2763697665266
+Energy: -1178.185785881508
+Energy: -1178.2695549749592
+Energy: -1178.1885989098346
+Energy: -1178.28344889969
+Energy: -1178.0195106435438
+Energy: -1178.2834284922826
+Energy: -1178.211644787619
+Energy: -1178.2516782362231
+Energy: -1178.180256156826
+Energy: -1178.2834556695339
+Energy: -1178.2100198120831
+Energy: -1178.2833093000702
+Energy: -1178.1905599685078
+Energy: -1178.2833122018092
+Energy: -1178.218049439174
+Energy: -1178.283818334246
+Energy: -1178.2446678472252
+Energy: -1178.2838014964677
+Energy: -1178.2238918878222
+Energy: -1178.2885088057417
+Energy: -1178.236893864987
+Energy: -1178.2859377891073
+Energy: -1178.2623480996815
+Energy: -1178.277217295937
+Energy: -1178.2849623206303
+Energy: -1178.2840113926377
+Energy: -1178.151384099054
+Energy: -1178.2765386046735
+Energy: -1178.1122433400105
+Energy: -1178.278136145285
+Energy: -1178.1696116627024
+Energy: -1178.2847900510872
+Energy: -1178.156725485958
+Energy: -1178.284359592165
+Energy: -1178.2241405708307
+Energy: -1178.2969649187537
+Energy: -1178.2109777964645
+Energy: -1178.2948591544837
+Energy: -1178.2651253416886
+Energy: -1178.2969548620613
+Energy: -1178.2816192539237
+Energy: -1178.296278962556
+Energy: -1178.2557640860414
+Energy: -1178.2790611360815
+Energy: -1178.2671720471599
+Energy: -1178.301572968845
+Energy: -1178.285202747177
+Energy: -1178.2983209584563
+Energy: -1178.1648657430994
+Energy: -1178.2740393218055
+Energy: -1178.171735472227
+Energy: -1178.2838312782778
+Energy: -1178.27092722261
+Energy: -1178.301365128093
+Energy: -1178.0867521577513
+Energy: -1178.2922527745177
+Energy: -1178.1990697293727
+Energy: -1178.2906564366265
+Energy: -1178.2321099248122
+Energy: -1178.2981957361428
+Energy: -1178.2270252280352
+Energy: -1178.2972210568187
+Energy: -1178.229786225943
+Energy: -1178.3015684333975
+Energy: -1178.289924279009
+Energy: -1178.3015729690635
+Energy: -1178.201873073904
+Energy: -1178.2950549897198
+Energy: -1178.2395574135592
+Energy: -1178.3021081490667
+Energy: -1178.1120060264777
+Energy: -1178.3060855864649
+Energy: -1177.9125536504819
+Energy: -1178.3109657544826
+Energy: -1177.9471436571496
+Energy: -1178.3109418667186
+Energy: -1177.9890800785834
+Energy: -1178.3453471965486
+Energy: -1178.0791493410625
+Energy: -1178.3431612111517
+Energy: -1178.1203947849358
+Energy: -1178.3449566940394
+Energy: -1178.113870533201
+Energy: -1178.3434265235685
+Energy: -1178.124993215589
+Energy: -1178.3408864226324
+Energy: -1178.2823471669974
+Energy: -1178.345236375498
+Energy: -1178.1418036763814
+Energy: -1178.3445260038454
+Energy: -1178.23334625756
+Energy: -1178.344578340936
+Energy: -1178.284654675757
+Energy: -1178.3453471965486
+Energy: -1178.1083343419466
+Energy: -1178.3453471965486
+Energy: -1178.1559301004565
+Energy: -1178.3453471965486
+Energy: -1178.0269359478314
+Energy: -1178.3442378502655
+Energy: -1178.0824158935834
+Energy: -1178.3514339235742
+Energy: -1178.149565776416
+Energy: -1178.3451774919465
+Energy: -1178.2639696769768
+Energy: -1178.3473961258508
+Energy: -1178.0665031808337
+Energy: -1178.3611412519635
+Energy: -1178.2043665760243
+Energy: -1178.3608958008203
+Energy: -1178.2080582485974
+Energy: -1178.3585704772145
+Energy: -1178.320846810354
+Energy: -1178.3580491572764
+Energy: -1178.0925871891989
+Energy: -1178.3609176469479
+Energy: -1178.1143232958696
+Energy: -1178.3483922443252
+Energy: -1177.9517583051622
+Energy: -1178.3542400187353
+Energy: -1178.1779658177902
+Energy: -1178.3606778677045
+Energy: -1178.1991730486734
+Energy: -1178.3615524831507
+Energy: -1177.9717514530525
+Energy: -1178.363012117635
+Energy: -1178.2524017191818
+Energy: -1178.3699706591353
+Energy: -1178.0716059557578
+Energy: -1178.3773115327504
+Energy: -1178.0060435761602
+Energy: -1178.3774846850013
+slurmstepd: error: *** JOB 18652 ON node11 CANCELLED AT 2025-05-29T09:35:09 ***

@@ -1,0 +1,146 @@
+
+
+**************************************************************
+Dice  Copyright (C) 2017  Sandeep Sharma
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+See the GNU General Public License for more details.
+
+
+Author:       Sandeep Sharma
+Contributors: James E Smith, Adam A Holmes, Bastien Mussard
+For detailed documentation on Dice please visit
+https://sanshar.github.io/Dice/
+Please visit our group page for up to date information on other projects
+http://www.colorado.edu/lab/sharmagroup/
+**************************************************************
+
+
+**************************************************************
+Input file  :
+**************************************************************
+#system
+nocc 10
+0 2 4 6 8 1 3 5 7 9 
+orbitals ./FCIDUMP
+nroots 1
+
+#variational
+schedule
+0  0.01
+end
+davidsonTol 5e-05
+dE 1e-08
+maxiter 10
+
+#pt
+nPTiter 0
+epsilon2 1e-07
+epsilon2Large 1000
+targetError 0.0001
+sampleN 200
+
+#misc
+io
+prefix .
+DoOneRDM
+DoSpinOneRDM
+DoRDM
+
+
+
+
+**************************************************************
+VARIATIONAL STEP  
+**************************************************************
+Iter Root       Eps1   #Var. Det.               Energy   #Davidson     Time(s)
+   0    0    1.00e-02          66      -109.0302344010          7        0.00
+   1    0    1.00e-02          66      -109.0302344010          1        0.00
+
+Performing final tight davidson with tol: 5e-05
+
+Exiting variational iterations
+Calculating RDM
+-54.8092174370844  23.1964057219971
+E from 2RDM: -109.030234401009
+VARIATIONAL CALCULATION RESULT
+------------------------------
+Root             Energy     Time(s)
+   0     -109.0302344010        2.24
+
+
+Printing most important determinants
+ Det     weight  Determinant string
+State :0
+   0    -9.74076517e-01  2 2 2 2 2   0 0 0 
+   1     8.15308246e-02  2 2 2 0 2   2 0 0 
+   2     8.15308246e-02  2 2 2 2 0   0 2 0 
+   3    -5.16749696e-02  2 2 2 b b   a a 0 
+   4    -5.16749696e-02  2 2 2 a a   b b 0 
+   5     4.66909787e-02  2 0 2 2 2   2 0 0 
+   6     4.66909787e-02  2 0 2 2 2   0 2 0 
+   7     4.62102742e-02  2 2 2 a b   b a 0 
+   8     4.62102742e-02  2 2 2 b a   a b 0 
+   9    -4.54842766e-02  2 2 2 2 0   b a 0 
+  10     4.54842766e-02  2 2 2 0 2   b a 0 
+  11     4.54842766e-02  2 2 2 2 0   a b 0 
+  12    -4.54842766e-02  2 2 2 0 2   a b 0 
+  13     4.54840805e-02  2 2 2 b a   2 0 0 
+  14    -4.54840805e-02  2 2 2 a b   2 0 0 
+  15    -4.54840805e-02  2 2 2 b a   0 2 0 
+  16     4.54840805e-02  2 2 2 a b   0 2 0 
+  17     4.09703580e-02  2 2 2 2 0   2 0 0 
+  18     4.09703580e-02  2 2 2 0 2   0 2 0 
+  19     2.33882200e-02  2 2 0 2 2   2 0 0 
+  20     2.33882200e-02  2 2 0 2 2   0 2 0 
+  21    -1.38787860e-02  b 2 2 a 2   b 0 a 
+  22    -1.38787860e-02  b 2 2 2 a   0 b a 
+  23    -1.38787860e-02  a 2 2 b 2   a 0 b 
+  24    -1.38787860e-02  a 2 2 2 b   0 a b 
+  25     1.26954090e-02  2 0 2 2 2   0 0 2 
+  26     9.19101904e-03  2 2 0 2 2   0 0 2 
+  27    -9.00800918e-03  b 2 2 2 a   b 0 a 
+  28     9.00800918e-03  b 2 2 a 2   0 b a 
+  29    -9.00800918e-03  a 2 2 2 b   a 0 b 
+  30     9.00800918e-03  a 2 2 b 2   0 a b 
+  31     8.87017139e-03  b 2 a 2 2   2 0 0 
+  32    -8.87017139e-03  a 2 b 2 2   2 0 0 
+  33     8.87017139e-03  b 2 a 2 2   0 2 0 
+  34    -8.87017139e-03  a 2 b 2 2   0 2 0 
+  35    -8.83186903e-03  2 2 b b 2   a 0 a 
+  36    -8.83186903e-03  2 2 b 2 b   0 a a 
+  37    -8.83186903e-03  2 2 a a 2   b 0 b 
+  38    -8.83186903e-03  2 2 a 2 a   0 b b 
+  39     8.40552119e-03  a 2 2 b 2   b 0 a 
+  40     8.40552119e-03  a 2 2 2 b   0 b a 
+  41     8.40552119e-03  b 2 2 a 2   a 0 b 
+  42     8.40552119e-03  b 2 2 2 a   0 a b 
+  43     6.45887279e-03  0 2 2 2 2   2 0 0 
+  44     6.45887279e-03  0 2 2 2 2   0 2 0 
+  45     5.79986374e-03  0 2 2 2 2   0 0 2 
+  46     5.73900102e-03  2 2 2 2 0   0 0 2 
+  47     5.73900102e-03  2 2 2 0 2   0 0 2 
+  48    -5.73229451e-03  2 2 b 2 b   a 0 a 
+  49     5.73229451e-03  2 2 b b 2   0 a a 
+  50    -5.73229451e-03  2 2 a 2 a   b 0 b 
+  51     5.73229451e-03  2 2 a a 2   0 b b 
+  52     5.65425714e-03  2 2 2 b a   b a 0 
+  53     5.65425714e-03  2 2 2 a b   a b 0 
+  54     5.45601496e-03  a 2 2 2 b   b 0 a 
+  55    -5.45601496e-03  a 2 2 b 2   0 b a 
+  56     5.45601496e-03  b 2 2 2 a   a 0 b 
+  57    -5.45601496e-03  b 2 2 a 2   0 a b 
+  58     5.30241928e-03  b 2 2 b 2   a 0 a 
+  59     5.30241928e-03  b 2 2 2 b   0 a a 
+  60     5.30241928e-03  a 2 2 a 2   b 0 b 
+  61     5.30241928e-03  a 2 2 2 a   0 b b 
+  62     3.44103506e-03  b 2 2 2 b   a 0 a 
+  63    -3.44103506e-03  b 2 2 b 2   0 a a 
+  64     3.44103506e-03  a 2 2 2 a   b 0 b 
+  65    -3.44103506e-03  a 2 2 a 2   0 b b 
+We cannot perform PT RDM with stochastic PT. Disabling RDM.
+
+**************************************************************
+PERTURBATION THEORY STEP  
+**************************************************************
