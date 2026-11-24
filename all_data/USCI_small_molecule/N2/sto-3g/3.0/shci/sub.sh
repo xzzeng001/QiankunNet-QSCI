@@ -1,0 +1,16 @@
+#!/bin/bash
+#SBATCH --job-name=Nxzzeng
+#SBATCH --ntasks=128  # 总核数
+#SBATCH --nodes=1  # 总节点数
+#SBATCH --cpus-per-task=1  # 每个核的线程数。对VASP而言总为1
+#SBATCH --output=%j.log
+#SBATCH --partition=public  # 队列名，可选debug，normal，long等
+
+# 提交作业之前，先加载环境：
+# module use /public/software/modulefiles/
+# module load vasp/6.4.2/intelmpi-intelmkl
+
+# 运行VASP
+stdbuf -o0 -e0 python main_shci.py
+#mpirun vasp_std > runlog
+

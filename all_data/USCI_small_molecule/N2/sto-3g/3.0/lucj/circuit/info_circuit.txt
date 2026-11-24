@@ -1,0 +1,3 @@
+Circuit depth: 132
+Number of single-qubit gates: 815
+Number of two-qubit gates: 246
