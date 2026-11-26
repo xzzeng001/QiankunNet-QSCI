@@ -67,7 +67,23 @@ From the repository root, this read-only example prints the header of the stored
 python -c "from pathlib import Path; p = Path('all_data/USCI_small_molecule/N2/circuit/circuit.qasm'); print('\n'.join(p.read_text().splitlines()[:6]))"
 ```
 
-Other useful starting points are the [P-cluster energy summary](all_data/Pcluster/pcluster_data.txt), the [Fe2S2 analysis directory](all_data/Fe2S2_40/nnqs/), and the P-cluster [alpha](all_data/Pcluster/Fe8S7_alpha/README.txt) and [beta](all_data/Pcluster/Fe8S7_beta/README.txt) circuit notes.
+For the iron-sulfur clusters, see the [P-cluster energy summary](all_data/Pcluster/plot/pcluster_data.txt), the [Fe2S2 analysis and plotting files](all_data/Fe2S2_40/nnqs/final/), and the P-cluster [alpha](all_data/Pcluster/Fe8S7_alpha/README.txt) and [beta](all_data/Pcluster/Fe8S7_beta/README.txt) circuit notes.
+
+### Figure S3 — N2 at 3.0 Å (STO-3G)
+
+[Figure S3](all_data/USCI_small_molecule/N2/sto-3g/3.0/FigS3.png) shows energy and absolute error relative to full configuration interaction (FCI) over 3,000 variational iterations. The [calculation directory](all_data/USCI_small_molecule/N2/sto-3g/3.0/) contains five CSV files for inspecting the curves and reference lines.
+
+| Files | Values plotted |
+| --- | --- |
+| `baseline_alone.csv`, `baseline_lucj.csv` | Instantaneous variational Monte Carlo energy (`vmce_Ha`) for QiankunNet alone and QiankunNet with LUCJ, respectively. Each file contains 30,000 iterations. The figure uses the first 3,000. |
+| `matched_K10.csv`, `matched_K20.csv` | Full-sector energies (`full_sector_energy_Ha`) for the SHCI and USCI-SHCI arms at each seed size. Select `phase = variational` and use the 109 checkpoints at iterations 1–50 and then every 50 iterations from 100 to 3,000. |
+| `references.csv` | HF, CCSD, SHCI, and FCI energies in hartree. Panel (b) uses the absolute difference from FCI in hartree and marks the chemical accuracy threshold at 0.0016 Ha. |
+
+To redraw the figure, run the following in MATLAB from the repository root. The [plotting script](all_data/USCI_small_molecule/N2/sto-3g/3.0/plot_figS3.m) uses its embedded energy tables and writes a 300 dpi version of `FigS3.png` beside the script, replacing the archived image. To plot revised CSV values, update the corresponding tables in the script.
+
+```matlab
+run('all_data/USCI_small_molecule/N2/sto-3g/3.0/plot_figS3.m')
+```
 
 ### Run a system-specific script
 

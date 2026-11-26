@@ -1,0 +1,5 @@
+method,energy_Ha,source
+HF,-106.47984262283,Original Fig. S3 script
+CCSD,-106.98760909682,Original Fig. S3 script; historical constant
+SHCI,-107.3603963752,Original Fig. S3 script; selected-CI threshold 0.1
+FCI,-107.43849085267871,Independent complete-space residual-verified calculation
