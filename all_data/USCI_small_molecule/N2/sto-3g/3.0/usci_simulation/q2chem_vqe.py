@@ -9,7 +9,7 @@ import numpy as np
 
 from qiskit import QuantumCircuit
 
-tol=6.0e-02
+tol=2.4e-01
 # Construct the circuit ansatz
 qc = generate_quantum_circuit_from_sci(tol)
 

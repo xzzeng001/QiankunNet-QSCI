@@ -234,7 +234,7 @@ def generate_quantum_circuit_from_sci(tol):
         
     return qc
 
-tol=6.e-02
+tol=2.4e-01
 qc = generate_quantum_circuit_from_sci(tol)
 
 from qiskit import QuantumCircuit, transpile, assemble
